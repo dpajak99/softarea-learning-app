@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_small"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/statistics_amount"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:gravity="center_vertical"
+        android:textAlignment="textEnd"
+        tools:ignore="RtlCompat" />
+
+    <ImageView
+        android:id="@+id/statistics_image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_small"
+        android:layout_toEndOf="@id/statistics_amount" />
+
+    <TextView
+        android:id="@+id/statistics_title"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_toEndOf="@id/statistics_image"
+        android:gravity="center_vertical" />
+</RelativeLayout>
+

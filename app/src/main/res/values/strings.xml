@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">learningapp</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Panel</string>
+    <string name="title_panel_add">Dodaj</string>
+    <string name="title_calendar">Kalendarz</string>
+    <string name="title_notifications">Wiadomości</string>
+    <string name="title_account">Twoje konto</string>
+
+    <string name="loreum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a nunc vel libero fringilla sollicitudin. Maecenas consectetur ligula sem. Pellentesque tempor augue vel lorem rhoncus cursus. Aenean sed pulvinar augue. Nulla aliquet urna nec auctor finibus. Pellentesque ipsum sapien, pulvinar id varius vitae, tincidunt facilisis ex. In luctus, urna a placerat ornare, sapien dui porta quam, id gravida nunc urna sit amet felis. Donec scelerisque, dolor vel molestie gravida, neque odio placerat libero, sit amet elementum magna orci sed lacus. Aenean malesuada orci quis blandit vestibulum. Suspendisse ac luctus nisl. Vestibulum vestibulum sed est a tincidunt. Suspendisse in nisl quis odio vehicula condimentum. Vivamus rutrum malesuada quam quis mattis. Morbi fringilla sit amet augue nec dignissim.
+        Suspendisse tempus ultricies mi, et pellentesque nulla imperdiet nec. Fusce ultricies, augue at iaculis tempus, diam purus luctus urna, eu posuere quam nisl sed nisi. Quisque sed justo vel magna pharetra tristique eu id diam. Integer condimentum malesuada imperdiet. Aenean vitae nunc ullamcorper, convallis eros at, tincidunt nunc. Sed in lacus vel nibh ultricies bibendum ut non urna. Aliquam porttitor leo neque. Fusce efficitur eleifend vestibulum. Quisque ac eleifend leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Nullam pharetra facilisis justo eget porta. Nullam metus libero, finibus in metus venenatis, finibus euismod quam. Nullam ac nisl odio. Cras cursus turpis quam, at convallis felis ullamcorper id. Donec sed aliquet nulla. Morbi ac est vitae justo imperdiet cursus sed vitae libero. Quisque ac dolor vel arcu vehicula euismod eu vitae nibh. Nam feugiat euismod lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dolor massa, tincidunt at facilisis in, interdum quis elit. Sed ut urna cursus, ultricies ligula in, varius mauris. Nullam finibus posuere malesuada.
+        Pellentesque quis hendrerit leo. Vivamus eleifend sagittis ante sed tempus. Vivamus rutrum tellus eu sapien ullamcorper maximus. Sed bibendum dapibus interdum. Donec at fermentum neque. In accumsan at justo in condimentum. Sed vitae posuere enim. Donec aliquet eget nisi tempus cursus. Nullam eget rhoncus nisi. Duis ut felis enim. Aliquam ornare condimentum lectus, a ultrices erat viverra non. Vivamus pharetra, purus vel suscipit placerat, mi augue vulputate ex, vel faucibus metus mi vel massa. Donec sed lobortis purus.
+        Etiam in dignissim enim. Fusce in sem eros. Donec sit amet lacus ultricies, pellentesque turpis ac, sagittis ex. Donec a ante non metus posuere semper. Pellentesque mattis diam et est sagittis fermentum. Sed cursus lorem nec consequat malesuada. Vestibulum sagittis felis vitae odio scelerisque rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec nec interdum velit. Sed sodales pellentesque varius.
+    </string>
 </resources>

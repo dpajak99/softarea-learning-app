@@ -1,4 +1,4 @@
-package com.softarea.learningapp.ui.dashboard;
+package com.softarea.learningapp.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.softarea.learningapp.MainActivity;
 import com.softarea.learningapp.R;
 
-public class DashboardFragment extends Fragment {
-
-  private DashboardViewModel dashboardViewModel;
+public class PanelAddFragment extends Fragment {
 
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
-    dashboardViewModel =
-      ViewModelProviders.of(this).get(DashboardViewModel.class);
+    AppBarLayout appBarLayout = MainActivity.appBarLayout;
+    appBarLayout.setExpanded(false, true);
+    appBarLayout.setBackground(getResources().getDrawable(R.color.backgroundColor));
+
     View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-    final TextView textView = root.findViewById(R.id.text_dashboard);
-    dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-      @Override
-      public void onChanged(@Nullable String s) {
-        textView.setText(s);
-      }
-    });
+
+
+
     return root;
   }
 }

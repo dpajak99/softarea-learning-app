@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#212529</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="backgroundColor">#FAFAFA</color>
+    <color name="below_toolbar">#dddddd</color>
+
+    <color name="scrollBar">#DDDDDD</color>
+    <color name="scrollBarTrack">#EEEEEE</color>
+
+    <color name="white_alpha_100">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="light_gray">#BBBBBB</color>
 </resources>

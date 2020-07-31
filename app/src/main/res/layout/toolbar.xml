@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout android:id="@+id/app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="295dp"
+    android:background="@color/backgroundColor"
+    android:fitsSystemWindows="true"
+    app:elevation="0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/menu_start"
+        android:fitsSystemWindows="true"
+        android:stateListAnimator="@null"
+        app:contentScrim="@drawable/menu_start"
+        app:theme="@style/ToolBarStyle"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:stateListAnimator="@null"
+            app:elevation="0dp"
+            app:layout_collapseMode="pin"
+            app:theme="@style/ToolBarStyle">
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="?attr/actionBarSize">
+
+            <RelativeLayout
+                android:id="@+id/profile_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="@dimen/margin_xsmall"
+                    android:src="@drawable/demo_profile" />
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/profile_image"
+                    android:fontFamily="@font/lato_black"
+                    android:text="Jan Kowalski"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/profile_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_name"
+                    android:layout_toEndOf="@id/profile_image"
+                    android:fontFamily="@font/lato"
+                    android:text="SOFTAREA - Art Developer"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_xsmall" />
+
+                <TextView
+                    android:id="@+id/profile_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_position"
+                    android:layout_toEndOf="@id/profile_image"
+                    android:fontFamily="@font/lato_black"
+                    android:text="365pkt"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_small" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_box">
+
+                <RelativeLayout
+                    android:id="@+id/card1"
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/box_shortcuts" />
+
+                <RelativeLayout
+                    android:id="@+id/card2"
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toEndOf="@id/card1"
+                    android:background="@drawable/box_shortcuts" />
+
+                <RelativeLayout
+                    android:id="@+id/card3"
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toEndOf="@id/card2"
+                    android:background="@drawable/box_shortcuts" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+</com.google.android.material.appbar.AppBarLayout>

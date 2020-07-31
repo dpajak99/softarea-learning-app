@@ -7,19 +7,27 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.softarea.learningapp.ui.home.HomeFragment"
+        android:name="com.softarea.learningapp.ui.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.softarea.learningapp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
+        android:id="@+id/navigation_panel_add"
+        android:name="com.softarea.learningapp.ui.PanelAddFragment"
+        android:label="@string/title_panel_add"
+        tools:layout="@layout/fragment_panel_add" />
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="com.softarea.learningapp.ui.CalendarFragment"
+        android:label="@string/title_calendar"
+        tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.softarea.learningapp.ui.notifications.NotificationsFragment"
+        android:name="com.softarea.learningapp.ui.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.softarea.learningapp.ui.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" />
 </navigation>

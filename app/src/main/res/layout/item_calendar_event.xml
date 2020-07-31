@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calendar_one"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/underline"
+        android:padding="@dimen/margin_small">
+
+        <LinearLayout
+            android:id="@+id/calendar_data_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_small">
+
+            <TextView
+                android:id="@+id/calendar_day"
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_black"
+                android:text="31"
+                android:textAlignment="center"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/calendar_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xsmall"
+                android:fontFamily="@font/lato"
+                android:text="lipiec"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calendar_details_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/calendar_data_box"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_small">
+
+            <TextView
+                android:id="@+id/calendar_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_xsmall"
+                android:fontFamily="@font/lato_bold"
+                android:text="14:00 - 15:00"
+                android:textSize="@dimen/font_small" />
+
+            <TextView
+                android:id="@+id/calendar_author_solid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_black"
+                android:text="Autor:"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_small" />
+
+            <TextView
+                android:id="@+id/calendar_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="Łukasz Usarz"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calendar_content_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/calendar_details_box"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_small">
+
+            <TextView
+                android:id="@+id/calendar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="Podsumowanie pierwszego miesiąca praktyk"
+                android:textSize="@dimen/font_small" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
