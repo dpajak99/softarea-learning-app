@@ -20,7 +20,7 @@ public class PanelAddFragment extends Fragment {
     appBarLayout.setExpanded(false, false);
     appBarLayout.setBackground(getResources().getDrawable(R.color.backgroundColor));
 
-    View root = inflater.inflate(R.layout.fragment_create_note, container, false);
+    View root = inflater.inflate(R.layout.fragment_panel_add, container, false);
 
 
 

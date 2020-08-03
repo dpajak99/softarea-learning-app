@@ -4,19 +4,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PanelAddFragment">
+    android:paddingBottom="@dimen/margin_medium"
+    tools:context=".ui.CreateNoteFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_large">
+
+        <TextView
+            style="@style/HeadingStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="Dodaj nową notatkę:" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@drawable/input"
+            android:fontFamily="@font/lato"
+            android:hint="Tytuł notatki"
+            android:padding="@dimen/margin_small"
+            android:textColorHint="#DCDCDC"
+            android:textSize="@dimen/font_medium" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@drawable/input"
+            android:fontFamily="@font/lato"
+            android:gravity="top"
+            android:hint="Treść notatki"
+            android:padding="@dimen/margin_small"
+            android:textColorHint="#DCDCDC"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            style="@style/HeadingStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="* Notatka może zawierać proste znaczniki HTML:"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/font_xsmall" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/ButtonDefault"
+                android:text="Dodaj" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/HeadingStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:text="Opcje dodatkowe:" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium">
+
+            <ImageView
+                android:id="@+id/button_add_image"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_add_image" />
+
+            <TextView
+                android:id="@+id/const_add_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_toEndOf="@id/button_add_image"
+                android:gravity="center_vertical"
+                android:text="Dodaj zdjęcia:"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/const_add_image"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_toEndOf="@id/button_add_image"
+                android:gravity="center_vertical"
+                android:text="(kliknij w obrazek po lewej aby dodać zdjęcia)"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_xsmall" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium">
+            <TextView
+                android:id="@+id/const_share_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:text="Udostępnij notatkę:"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/const_share_note"
+                android:layout_marginStart="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:text="(wpisz identyfikator osoby, której chcesz udostępnić notatkę)"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_xsmall" />
+        </RelativeLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@drawable/input"
+            android:fontFamily="@font/lato"
+            android:hint="np.: lusarz"
+            android:padding="@dimen/margin_small"
+            android:textColorHint="#DCDCDC"
+            android:textSize="@dimen/font_medium" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

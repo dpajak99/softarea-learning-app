@@ -55,19 +55,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/lato_black"
                     android:text="Nadchodzące wydarzenia"
-                    android:textAllCaps="true"
-                    android:textSize="@dimen/font_medium" />
+                    style="@style/HeadingStyle"/>
 
                 <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
+                    style="@style/ButtonDefault"
                     android:text="Zobacz więcej"
-                    android:textColor="@color/white" />
+                    android:layout_marginTop="@dimen/margin_small" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -98,23 +92,17 @@
                 android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
+                    style="@style/HeadingStyle"
                     android:id="@+id/text_p2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/lato_black"
-                    android:text="Tutoriale"
-                    android:textAllCaps="true"
-                    android:textSize="@dimen/font_medium" />
+                    android:text="Tutoriale" />
 
                 <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    style="@style/ButtonDefault"
                     android:layout_marginTop="@dimen/margin_xsmall"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
-                    android:text="Zobacz więcej"
-                    android:textColor="@color/white" />
+                    android:text="Zobacz więcej" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -143,12 +131,10 @@
 
             <TextView
                 android:id="@+id/text_p3"
+                style="@style/HeadingStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_black"
-                android:text="STATYSTYKI"
-                android:textAllCaps="true"
-                android:textSize="@dimen/font_medium" />
+                android:text="STATYSTYKI" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_statistic"
