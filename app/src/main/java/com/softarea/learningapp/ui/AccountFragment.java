@@ -24,7 +24,7 @@ public class AccountFragment extends Fragment {
     final TextView textView = root.findViewById(R.id.text_notifications);
 
     AppBarLayout appBarLayout = MainActivity.appBarLayout;
-    appBarLayout.setExpanded(false, true);
+    appBarLayout.setExpanded(false, false);
     appBarLayout.setBackground(getResources().getDrawable(R.color.backgroundColor));
 
     return root;

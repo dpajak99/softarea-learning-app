@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#212529</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccentRed">#A14C45</color>
+    <color name="colorAccentGreen">#537464</color>
 
     <color name="backgroundColor">#FAFAFA</color>
     <color name="below_toolbar">#dddddd</color>

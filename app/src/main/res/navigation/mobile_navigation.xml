@@ -30,4 +30,10 @@
         android:name="com.softarea.learningapp.ui.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/navigation_create_note"
+        android:name="com.softarea.learningapp.ui.CreateNoteFragment"
+        android:label="@string/title_create_note"
+        tools:layout="@layout/fragment_create_note" />
 </navigation>
