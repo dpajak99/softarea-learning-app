@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
       .build();
     navController = Navigation.findNavController(this, R.id.fragment_main);
     bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.bottom_nav_menu, menu);
+    inflater.inflate(R.menu.menu_appar, menu);
     return true;
   }
 
