@@ -79,9 +79,8 @@ public class HomeFragment extends Fragment {
     statisticsElementList.setAdapter(statisticsElementAdapter);
 
 
-
     AppBarLayout appBarLayout = MainActivity.appBarLayout;
-    appBarLayout.setExpanded(true, true);
+    appBarLayout.setExpanded(true, false);
     appBarLayout.setBackground(getResources().getDrawable(R.color.below_toolbar));
 
     return root;

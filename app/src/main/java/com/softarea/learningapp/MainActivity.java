@@ -5,6 +5,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -36,22 +40,33 @@ public class MainActivity extends AppCompatActivity {
 
     toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-
+    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        MainActivity.this.onBackPressed();
+      }
+    });
 
     collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
     appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-
-
-
-
 
     AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
       R.id.navigation_home, R.id.navigation_panel_add, R.id.navigation_calendar, R.id.navigation_notifications, R.id.navigation_account)
       .build();
     navController = Navigation.findNavController(this, R.id.fragment_main);
     bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+    LinearLayout[] createNote = { findViewById(R.id.shortcut_card1), findViewById(R.id.shortcut_card2), findViewById(R.id.shortcut_card3) };
+    createNote[0].setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v)
+      {
+        navController.navigate(R.id.navigation_create_note);
+      }
+    });
 
 
     appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -78,8 +93,19 @@ public class MainActivity extends AppCompatActivity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.bottom_nav_menu, menu);
+    inflater.inflate(R.menu.menu_appar, menu);
     return true;
   }
+
+  @Override
+  public void onBackPressed(){
+    if (getSupportFragmentManager().getBackStackEntryCount() == 1){
+      finish();
+    }
+    else {
+      super.onBackPressed();
+    }
+  }
+
 
 }
