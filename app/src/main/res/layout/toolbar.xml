@@ -17,7 +17,7 @@
         android:stateListAnimator="@null"
         app:contentScrim="@drawable/menu_start"
         app:theme="@style/ToolBarStyle"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

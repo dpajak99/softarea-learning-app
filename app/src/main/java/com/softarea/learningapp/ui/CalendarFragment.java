@@ -21,7 +21,7 @@ public class CalendarFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_calendar, container, false);
-    final TextView textView = root.findViewById(R.id.text_notifications);
+    MainActivity.setExpandAndCollapseEnabled(false);
     AppBarLayout appBarLayout = MainActivity.appBarLayout;
     appBarLayout.setExpanded(false, false);
     appBarLayout.setBackground(getResources().getDrawable(R.color.backgroundColor));
