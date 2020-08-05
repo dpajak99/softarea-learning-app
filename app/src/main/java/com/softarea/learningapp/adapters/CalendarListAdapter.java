@@ -54,7 +54,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
   public void onBindViewHolder(ViewHolder holder, int position) {
     CalendarEvent calendarEvent = calendarEvents.get(position);
 
-    holder.calendarEventDay.setText(CalendarUtils.transformDay(calendarEvent.getDay()));
+    holder.calendarEventDay.setText(String.format("%02d", calendarEvent.getDay()));
     holder.calendarEventMonth.setText(CalendarUtils.transformMonth(calendarEvent.getMonth()));
     holder.calendarEventTime.setText(StringUtils.join(calendarEvent.getEventStartTime(), " - ", calendarEvent.getEventEndTime() ));
     holder.calendarEventTitle.setText(StringUtils.join(calendarEvent.getAuthor().getFirstName(), " ", calendarEvent.getAuthor().getSurname()));
