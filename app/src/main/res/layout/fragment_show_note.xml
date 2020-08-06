@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ui.NotificationsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.softarea.learningapp.components.ImageViewRounded
+            android:id="@+id/note_author_image"
+            android:layout_width="25dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            android:layout_height="25dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_small"
+                android:text="Autor notatki:"/>
+            <TextView
+                android:id="@+id/note_author_name"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/font_small"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/note_title"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_height="wrap_content"
+        style="@style/HeadingStyle"/>
+    <TextView
+        android:id="@+id/note_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/note_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:textColor="@color/light_gray"
+        android:fontFamily="@font/lato" />
+</LinearLayout>

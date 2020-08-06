@@ -14,6 +14,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.activities.MainActivity;
 import com.softarea.learningapp.adapters.NotesAdapter;
+import com.softarea.learningapp.dao.NotesDAO;
 import com.softarea.learningapp.sqlite.DBManager;
 
 public class NotesFragment extends Fragment {
@@ -29,7 +30,7 @@ public class NotesFragment extends Fragment {
 
    // NotesAdapter notesAdapter = new NotesAdapter(NotesDAO.getData());
     DBManager dbManager = new DBManager(requireContext());
-    NotesAdapter notesAdapter = new NotesAdapter(dbManager.queryNote());
+    NotesAdapter notesAdapter = new NotesAdapter(NotesDAO.getNotes(requireContext()));
     notesList.setHasFixedSize(true);
     notesList.setAdapter(notesAdapter);
 

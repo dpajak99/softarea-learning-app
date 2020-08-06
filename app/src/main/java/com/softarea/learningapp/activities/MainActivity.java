@@ -23,7 +23,7 @@ import com.softarea.learningapp.dao.ToolbarShortcutDAO;
 
 public class MainActivity extends AppCompatActivity {
 
-  Toolbar toolbar;
+  public static Toolbar toolbar;
   BottomNavigationView bottomNavigationView;
   CollapsingToolbarLayout collapsingToolbarLayout;
   RecyclerView toolbarShortcutsList;

@@ -17,7 +17,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE NOTES" +
-                "(title VARCHAR, " +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+          "       title VARCHAR, " +
           "       content VARCHAR, " +
           "       date DATETIME, " +
           "       author VARCHAR)");

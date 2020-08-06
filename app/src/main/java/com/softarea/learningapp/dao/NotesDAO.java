@@ -1,24 +1,25 @@
 package com.softarea.learningapp.dao;
 
-import com.softarea.learningapp.R;
-import com.softarea.learningapp.model.Note;
-import com.softarea.learningapp.model.User;
+import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.Date;
+import com.softarea.learningapp.model.Note;
+import com.softarea.learningapp.sqlite.DBManager;
+
 import java.util.List;
 
 public class NotesDAO {
-  public static List<Note> getData() {
-    List<Note> notes = new ArrayList<>();
-    User author = new User("Dominik", "Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile);
-    notes.add(new Note("Test1 title", "Test1 content", author, new Date()));
-    notes.add(new Note("Test2 title", "Test2 content", author, new Date()));
-    notes.add(new Note("Test3 title", "Test3 content", author, new Date()));
-    notes.add(new Note("Test4 title", "Test4 content", author, new Date()));
-    notes.add(new Note("Test5 title", "Test5 content", author, new Date()));
-    notes.add(new Note("Test6 title", "Test6 content", author, new Date()));
+  public static void createNote(Context context, Note note ) {
+    DBManager dbHelper = new DBManager(context);
+    dbHelper.addNote(note);
+  }
 
-    return notes;
+  public static List<Note> getNotes(Context context) {
+    DBManager dbHelper = new DBManager(context);
+    return dbHelper.getNotes();
+  }
+
+  public static int getLastId(Context context) {
+    DBManager dbHelper = new DBManager(context);
+    return dbHelper.getLastId();
   }
 }
