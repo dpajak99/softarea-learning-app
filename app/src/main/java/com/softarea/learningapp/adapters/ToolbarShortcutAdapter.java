@@ -19,7 +19,7 @@ import static com.softarea.learningapp.activities.MainActivity.navController;
 
 public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcutAdapter.ViewHolder> {
 
-  private List<ToolbarShortcut> objects;
+  private List<ToolbarShortcut> toolbarShortcuts;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout contentHolder;
@@ -35,7 +35,7 @@ public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcut
   }
 
   public ToolbarShortcutAdapter(List<ToolbarShortcut> objects) {
-    this.objects = objects;
+    this.toolbarShortcuts = objects;
   }
 
   @NonNull
@@ -49,7 +49,7 @@ public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcut
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    ToolbarShortcut object = objects.get(position);
+    ToolbarShortcut object = toolbarShortcuts.get(position);
     holder.contentHolder.setOnClickListener(v -> navController.navigate(object.getHref()));
     holder.title.setText(object.getTitle());
     holder.icon.setBackgroundResource(object.getImage());
@@ -58,6 +58,6 @@ public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcut
 
   @Override
   public int getItemCount() {
-    return objects.size();
+    return toolbarShortcuts.size();
   }
 }

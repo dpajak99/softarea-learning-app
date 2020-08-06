@@ -17,7 +17,7 @@ import java.util.List;
 
 public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapter.ViewHolder> {
 
-  private List<Event> objects;
+  private List<Event> events;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public TextView calendarEventDay;
@@ -37,7 +37,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
   }
 
   public CalendarListAdapter(List<Event> objects) {
-    this.objects = objects;
+    this.events = objects;
   }
 
   @NonNull
@@ -51,7 +51,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    Event event = objects.get(position);
+    Event event = events.get(position);
 
     holder.calendarEventDay.setText(String.format("%02d", event.getDay()));
     holder.calendarEventMonth.setText(CalendarUtils.transformMonth(event.getMonth()));
@@ -63,6 +63,6 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
 
   @Override
   public int getItemCount() {
-    return objects.size();
+    return events.size();
   }
 }

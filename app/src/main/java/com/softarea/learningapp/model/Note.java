@@ -1,5 +1,9 @@
 package com.softarea.learningapp.model;
 
+import android.database.Cursor;
+
+import com.softarea.learningapp.R;
+
 import java.util.Date;
 
 public class Note {
@@ -8,11 +12,18 @@ public class Note {
   private User author;
   private Date createdAt;
 
-  public Note(String title, String content, User author, Date created_at ) {
+  public Note(String title, String content, User author, Date created_at) {
     this.title = title;
     this.content = content;
     this.author = author;
     this.createdAt = created_at;
+  }
+
+  public Note(Cursor cursor) {
+    this.title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
+    this.content = cursor.getString(cursor.getColumnIndexOrThrow("content"));
+    this.author = new User("Dominik", "Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile);
+    this.createdAt = new Date();
   }
 
   public String getTitle() {

@@ -19,25 +19,25 @@ import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
-  private List<Note> objects;
+  private List<Note> notes;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
-    public TextView noteTitle;
-    public TextView noteDate;
-    public TextView noteAuthorName;
-    public ImageView noteAuthorImage;
+    public TextView title;
+    public TextView date;
+    public TextView authorName;
+    public ImageView authorImage;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
-      noteTitle = itemView.findViewById(R.id.note_title);
-      noteDate = itemView.findViewById(R.id.note_date);
-      noteAuthorName = itemView.findViewById(R.id.note_author_name);
-      noteAuthorImage = itemView.findViewById(R.id.note_author_image);
+      title = itemView.findViewById(R.id.note_title);
+      date = itemView.findViewById(R.id.note_date);
+      authorName = itemView.findViewById(R.id.note_author_name);
+      authorImage = itemView.findViewById(R.id.note_author_image);
     }
   }
 
-  public NotesAdapter(List<Note> objects) {
-    this.objects = objects;
+  public NotesAdapter(List<Note> notes) {
+    this.notes = notes;
   }
 
   @NonNull
@@ -51,19 +51,19 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    Note note = objects.get(position);
-    holder.noteTitle.setText(note.getTitle());
-    holder.noteAuthorName.setText(note.getAuthor().getFullName());
-    holder.noteAuthorImage.setImageResource(note.getAuthor().getImage());
+    Note note = notes.get(position);
+    holder.title.setText(note.getTitle());
+    holder.authorName.setText(note.getAuthor().getFullName());
+    holder.authorImage.setImageResource(note.getAuthor().getImage());
 
     @SuppressLint("SimpleDateFormat") SimpleDateFormat parseDate = new SimpleDateFormat("yyyy-MM-dd");
     @SuppressLint("SimpleDateFormat") SimpleDateFormat parseTime = new SimpleDateFormat("HH:mm");
-    holder.noteDate.setText(StringUtils.join(parseDate.format(note.getCreatedAt()), " \n", parseTime.format(note.getCreatedAt())));
+    holder.date.setText(StringUtils.join(parseDate.format(note.getCreatedAt()), " \n", parseTime.format(note.getCreatedAt())));
 
   }
 
   @Override
   public int getItemCount() {
-    return objects.size();
+    return notes.size();
   }
 }
