@@ -6,13 +6,13 @@ public class Note {
   private String title;
   private String content;
   private User author;
-  private Date created_at;
+  private Date createdAt;
 
   public Note(String title, String content, User author, Date created_at ) {
     this.title = title;
     this.content = content;
     this.author = author;
-    this.created_at = created_at;
+    this.createdAt = created_at;
   }
 
   public String getTitle() {
@@ -27,8 +27,8 @@ public class Note {
     return author;
   }
 
-  public Date getCreated_at() {
-    return created_at;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
 

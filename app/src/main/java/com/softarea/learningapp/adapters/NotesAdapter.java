@@ -19,7 +19,7 @@ import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
-  private List<Note> notes;
+  private List<Note> objects;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public TextView noteTitle;
@@ -36,8 +36,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     }
   }
 
-  public NotesAdapter(List<Note> notes) {
-    this.notes = notes;
+  public NotesAdapter(List<Note> objects) {
+    this.objects = objects;
   }
 
   @NonNull
@@ -51,19 +51,19 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    Note note = notes.get(position);
+    Note note = objects.get(position);
     holder.noteTitle.setText(note.getTitle());
     holder.noteAuthorName.setText(note.getAuthor().getFullName());
     holder.noteAuthorImage.setImageResource(note.getAuthor().getImage());
 
     @SuppressLint("SimpleDateFormat") SimpleDateFormat parseDate = new SimpleDateFormat("yyyy-MM-dd");
     @SuppressLint("SimpleDateFormat") SimpleDateFormat parseTime = new SimpleDateFormat("HH:mm");
-    holder.noteDate.setText(StringUtils.join(parseDate.format(note.getCreated_at()), " \n", parseTime.format(note.getCreated_at())));
+    holder.noteDate.setText(StringUtils.join(parseDate.format(note.getCreatedAt()), " \n", parseTime.format(note.getCreatedAt())));
 
   }
 
   @Override
   public int getItemCount() {
-    return notes.size();
+    return objects.size();
   }
 }

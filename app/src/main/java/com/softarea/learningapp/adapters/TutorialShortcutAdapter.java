@@ -1,7 +1,5 @@
 package com.softarea.learningapp.adapters;
 
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,7 @@ import java.util.List;
 
 public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortcutAdapter.ViewHolder> {
 
-  private List<TutorialShortcut> tutorialShortcuts;
+  private List<TutorialShortcut> objects;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public TextView tutorialTitle;
@@ -36,8 +34,8 @@ public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortc
     }
   }
 
-  public TutorialShortcutAdapter(List<TutorialShortcut> tutorialShortcuts) {
-    this.tutorialShortcuts = tutorialShortcuts;
+  public TutorialShortcutAdapter(List<TutorialShortcut> objects) {
+    this.objects = objects;
   }
 
   @NonNull
@@ -51,7 +49,7 @@ public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortc
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    TutorialShortcut tutorialShortcut = tutorialShortcuts.get(position);
+    TutorialShortcut tutorialShortcut = objects.get(position);
     holder.tutorialTitle.setText(tutorialShortcut.getTitle());
     if( tutorialShortcut.getCurrentTask() == 0 ) {
       holder.tutorialStatusMessage.setText("Nie rozpoczęto!");
@@ -71,6 +69,6 @@ public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortc
 
   @Override
   public int getItemCount() {
-    return tutorialShortcuts.size();
+    return objects.size();
   }
 }

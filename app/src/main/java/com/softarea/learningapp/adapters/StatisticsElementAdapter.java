@@ -11,14 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.model.StatisticsElement;
-import com.softarea.learningapp.model.TutorialShortcut;
-import com.softarea.learningapp.utils.StringUtils;
 
 import java.util.List;
 
 public class StatisticsElementAdapter extends RecyclerView.Adapter<StatisticsElementAdapter.ViewHolder> {
 
-  private List<StatisticsElement> statisticsElements;
+  private List<StatisticsElement> objects;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public TextView statisticsTitle;
@@ -34,7 +32,7 @@ public class StatisticsElementAdapter extends RecyclerView.Adapter<StatisticsEle
   }
 
   public StatisticsElementAdapter(List<StatisticsElement> statisticsElements) {
-    this.statisticsElements = statisticsElements;
+    this.objects = statisticsElements;
   }
 
   @NonNull
@@ -48,7 +46,7 @@ public class StatisticsElementAdapter extends RecyclerView.Adapter<StatisticsEle
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    StatisticsElement statisticsElement = statisticsElements.get(position);
+    StatisticsElement statisticsElement = objects.get(position);
     holder.statisticsTitle.setText(statisticsElement.getName());
     holder.statisticsAmount.setText(String.valueOf(statisticsElement.getAmount()));
     holder.statisticImage.setImageResource(statisticsElement.getIcon());
@@ -57,6 +55,6 @@ public class StatisticsElementAdapter extends RecyclerView.Adapter<StatisticsEle
 
   @Override
   public int getItemCount() {
-    return statisticsElements.size();
+    return objects.size();
   }
 }

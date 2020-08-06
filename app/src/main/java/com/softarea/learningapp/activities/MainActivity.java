@@ -1,10 +1,8 @@
-package com.softarea.learningapp;
+package com.softarea.learningapp.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,56 +11,43 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.softarea.learningapp.R;
+import com.softarea.learningapp.adapters.ToolbarShortcutAdapter;
+import com.softarea.learningapp.dao.ToolbarShortcutDAO;
 
 public class MainActivity extends AppCompatActivity {
 
   Toolbar toolbar;
-  NavController navController;
   BottomNavigationView bottomNavigationView;
   CollapsingToolbarLayout collapsingToolbarLayout;
-  public static NestedScrollView mNestedView;
+  RecyclerView toolbarShortcutsList;
 
+  /*TODO: Repair memory leak warning!!!!!*/
+  private static NestedScrollView mNestedView;
+  public static NavController navController;
+  /*-------------------------------------*/
   public static AppBarLayout appBarLayout;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    //BottomNavigationView navView = findViewById(R.id.nav_view);
-    mNestedView = findViewById(R.id.nested);
-    toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        MainActivity.this.onBackPressed();
-      }
-    });
 
-    collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-    appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+    initViews();
+    initStartSettings();
 
 
-    setExpandAndCollapseEnabled(true);
+    ToolbarShortcutAdapter toolbarShortcutAdapter = new ToolbarShortcutAdapter(ToolbarShortcutDAO.getData());
 
-
-    AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-      R.id.navigation_home, R.id.navigation_panel_add, R.id.navigation_calendar, R.id.navigation_notifications, R.id.navigation_account)
-      .build();
-    navController = Navigation.findNavController(this, R.id.fragment_main);
-    bottomNavigationView = findViewById(R.id.bottomNavigation);
-
-
-    NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-    NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-    LinearLayout[] createNote = { findViewById(R.id.shortcut_card1), findViewById(R.id.shortcut_card2), findViewById(R.id.shortcut_card3) };
-    createNote[0].setOnClickListener(v -> navController.navigate(R.id.navigation_create_note));
-    createNote[1].setOnClickListener(v -> navController.navigate(R.id.navigation_notes));
+    toolbarShortcutsList.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false));
+    toolbarShortcutsList.setHasFixedSize(true);
+    toolbarShortcutsList.setAdapter(toolbarShortcutAdapter);
 
 
     appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -78,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
           collapsingToolbarLayout.setTitle(navController.getCurrentDestination().getLabel());
           isShow = true;
         } else if (isShow) {
-          collapsingToolbarLayout.setTitle(" ");//careful there should a space between double quote otherwise it wont work
+          collapsingToolbarLayout.setTitle(" ");
           isShow = false;
         }
       }
@@ -86,11 +71,35 @@ public class MainActivity extends AppCompatActivity {
 
   }
 
-  public static void setExpandAndCollapseEnabled(boolean enabled) {
+  public static void setExpandAndCollapseEnabled(boolean enabled) { ;
     NestedScrollView mNestedView = MainActivity.mNestedView;
     if (mNestedView.isNestedScrollingEnabled() != enabled) {
       mNestedView.setNestedScrollingEnabled(enabled);
     }
+  }
+
+  private void initViews() {
+    mNestedView = findViewById(R.id.nested);
+    toolbar = findViewById(R.id.toolbar);
+    collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
+    appBarLayout = findViewById(R.id.app_bar);
+    bottomNavigationView = findViewById(R.id.bottomNavigation);
+    toolbarShortcutsList = findViewById(R.id.list_toolbar_shortcuts);
+  }
+
+  private void initStartSettings() {
+    setSupportActionBar(toolbar);
+    toolbar.setNavigationOnClickListener(v -> MainActivity.this.onBackPressed());
+    setExpandAndCollapseEnabled(true);
+
+    AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+      R.id.navigation_home, R.id.navigation_panel_add, R.id.navigation_calendar, R.id.navigation_notifications, R.id.navigation_account)
+      .build();
+    navController = Navigation.findNavController(this, R.id.fragment_main);
+
+
+    NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+    NavigationUI.setupWithNavController(bottomNavigationView, navController);
   }
 
   @Override

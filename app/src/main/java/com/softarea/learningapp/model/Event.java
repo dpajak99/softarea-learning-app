@@ -1,20 +1,20 @@
 package com.softarea.learningapp.model;
 
-public class CalendarEvent {
+public class Event {
   private int day;
   private int month;
   private int year;
-  private String eventStartTime;
-  private String eventEndTime;
+  private String startTime;
+  private String endTime;
   private String title;
   private User author;
 
-  public CalendarEvent(int day, int month, int year, String eventStartTime, String eventEndTime, String title, User author) {
+  public Event(int day, int month, int year, String startTime, String endTime, String title, User author) {
     this.day = day;
     this.month = month;
     this.year = year;
-    this.eventStartTime = eventStartTime;
-    this.eventEndTime = eventEndTime;
+    this.startTime = startTime;
+    this.endTime = endTime;
     this.title = title;
     this.author = author;
   }
@@ -31,12 +31,12 @@ public class CalendarEvent {
     return year;
   }
 
-  public String getEventStartTime() {
-    return eventStartTime;
+  public String getStartTime() {
+    return startTime;
   }
 
-  public String getEventEndTime() {
-    return eventEndTime;
+  public String getEndTime() {
+    return endTime;
   }
 
   public String getTitle() {
@@ -53,8 +53,8 @@ public class CalendarEvent {
       "day=" + day +
       ", month=" + month +
       ", year=" + year +
-      ", eventStartTime='" + eventStartTime + '\'' +
-      ", eventEndTime='" + eventEndTime + '\'' +
+      ", eventStartTime='" + startTime + '\'' +
+      ", eventEndTime='" + endTime + '\'' +
       ", title='" + title + '\'' +
       ", author=" + author +
       '}';
