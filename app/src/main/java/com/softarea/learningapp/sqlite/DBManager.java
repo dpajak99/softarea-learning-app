@@ -35,6 +35,19 @@ public class DBManager {
     }
   }
 
+  public boolean deleteNote( int id ) {
+    db.beginTransaction();
+    try {
+      db.execSQL("DELETE FROM NOTES WHERE id="+id);
+      db.setTransactionSuccessful();
+    } catch (Exception e) {
+      return false;
+    } finally {
+      db.endTransaction();
+    }
+    return true;
+  }
+
   public List<Note> getNotes() {
     ArrayList<Note> list = new ArrayList<>();
       Cursor c = db.rawQuery("SELECT * FROM NOTES ORDER BY id DESC", null);

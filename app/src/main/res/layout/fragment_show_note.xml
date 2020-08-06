@@ -21,7 +21,7 @@
             android:scaleType="centerCrop"
             android:layout_height="25dp"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_small"
             android:orientation="vertical">
@@ -36,6 +36,18 @@
                 android:textSize="@dimen/font_small"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/delete_note"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_gravity="right"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_delete"/>
+        </LinearLayout>
+
     </LinearLayout>
     <TextView
         android:id="@+id/note_title"

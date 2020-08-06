@@ -9,17 +9,22 @@ import java.util.List;
 
 public class NotesDAO {
   public static void createNote(Context context, Note note ) {
-    DBManager dbHelper = new DBManager(context);
-    dbHelper.addNote(note);
+    DBManager dbManager = new DBManager(context);
+    dbManager.addNote(note);
   }
 
   public static List<Note> getNotes(Context context) {
-    DBManager dbHelper = new DBManager(context);
-    return dbHelper.getNotes();
+    DBManager dbManager = new DBManager(context);
+    return dbManager.getNotes();
   }
 
   public static int getLastId(Context context) {
-    DBManager dbHelper = new DBManager(context);
-    return dbHelper.getLastId();
+    DBManager dbManager = new DBManager(context);
+    return dbManager.getLastId();
+  }
+
+  public static boolean deleteNote(Context context, int id ) {
+    DBManager bdbManager = new DBManager(context);
+    return bdbManager.deleteNote(id);
   }
 }
