@@ -16,6 +16,7 @@ public class PanelAddFragment extends Fragment {
 
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
+    MainActivity.setExpandAndCollapseEnabled(false);
     AppBarLayout appBarLayout = MainActivity.appBarLayout;
     appBarLayout.setExpanded(false, false);
     appBarLayout.setBackground(getResources().getDrawable(R.color.backgroundColor));

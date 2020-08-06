@@ -4,16 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,14 +29,14 @@ public class HomeFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_home, container, false);
-
+    MainActivity.setExpandAndCollapseEnabled(true);
     List<TutorialShortcut> tutorialShortcuts = new ArrayList<>();
     tutorialShortcuts.add(new TutorialShortcut( "Podstawowe komponenty Android", 36, 5));
     tutorialShortcuts.add(new TutorialShortcut( "Czym jest widok w aplikacji Android", 5, 0));
     tutorialShortcuts.add(new TutorialShortcut( "Czysty kod a profesjonalizm", 17, 5));
     tutorialShortcuts.add(new TutorialShortcut( "Wprowadzanie danych - Android", 34, 34));
 
-    User author = new User( "Łukasz", "Usarz", "SOFTAREA - SEO");
+    User author = new User( "Łukasz", "Usarz", "SOFTAREA - SEO", R.drawable.demo_profile);
 
     List<CalendarEvent> calendarEvents = new ArrayList<>();
     calendarEvents.add(new CalendarEvent(31, 7, 2020, "14:00", "14:30", "Podsumowanie pierwszego miesiąca praktyk", author ));

@@ -36,4 +36,9 @@
         android:name="com.softarea.learningapp.ui.CreateNoteFragment"
         android:label="@string/title_create_note"
         tools:layout="@layout/fragment_create_note" />
+    <fragment
+        android:id="@+id/navigation_notes"
+        android:name="com.softarea.learningapp.ui.NotesFragment"
+        android:label="@string/title_notes"
+        tools:layout="@layout/fragment_notes" />
 </navigation>
