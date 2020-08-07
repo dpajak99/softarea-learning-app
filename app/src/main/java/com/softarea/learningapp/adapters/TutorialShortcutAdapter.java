@@ -1,7 +1,5 @@
 package com.softarea.learningapp.adapters;
 
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,22 +20,22 @@ public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortc
   private List<TutorialShortcut> tutorialShortcuts;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
-    public TextView tutorialTitle;
-    public TextView tutorialStatusMessage;
-    public TextView tutorialProgress;
-    public ImageView tutorialStatusImage;
+    public TextView title;
+    public TextView statusMessage;
+    public TextView progress;
+    public ImageView statusImage;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
-      tutorialTitle = itemView.findViewById(R.id.tutorial_title);
-      tutorialStatusMessage = itemView.findViewById(R.id.tutorial_status_message);
-      tutorialProgress = itemView.findViewById(R.id.tutorial_progress);
-      tutorialStatusImage = itemView.findViewById(R.id.tutorial_status_icon);
+      title = itemView.findViewById(R.id.tutorial_title);
+      statusMessage = itemView.findViewById(R.id.tutorial_status_message);
+      progress = itemView.findViewById(R.id.tutorial_progress);
+      statusImage = itemView.findViewById(R.id.tutorial_status_icon);
     }
   }
 
-  public TutorialShortcutAdapter(List<TutorialShortcut> tutorialShortcuts) {
-    this.tutorialShortcuts = tutorialShortcuts;
+  public TutorialShortcutAdapter(List<TutorialShortcut> objects) {
+    this.tutorialShortcuts = objects;
   }
 
   @NonNull
@@ -52,19 +50,19 @@ public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortc
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     TutorialShortcut tutorialShortcut = tutorialShortcuts.get(position);
-    holder.tutorialTitle.setText(tutorialShortcut.getTitle());
+    holder.title.setText(tutorialShortcut.getTitle());
     if( tutorialShortcut.getCurrentTask() == 0 ) {
-      holder.tutorialStatusMessage.setText("Nie rozpoczęto!");
-      holder.tutorialStatusImage.setImageResource(R.drawable.ic_not_finished);
+      holder.statusMessage.setText("Nie rozpoczęto!");
+      holder.statusImage.setImageResource(R.drawable.ic_not_finished);
     } else if( tutorialShortcut.getCurrentTask() < tutorialShortcut.getMaxTasks() ) {
-      holder.tutorialStatusMessage.setText("Nie ukończono!");
-      holder.tutorialStatusImage.setImageResource(R.drawable.ic_not_finished);
+      holder.statusMessage.setText("Nie ukończono!");
+      holder.statusImage.setImageResource(R.drawable.ic_not_finished);
     } else {
-      holder.tutorialStatusMessage.setText("Ukończono!");
-      holder.tutorialStatusImage.setImageResource(R.drawable.ic_ok);
+      holder.statusMessage.setText("Ukończono!");
+      holder.statusImage.setImageResource(R.drawable.ic_ok);
     }
 
-    holder.tutorialProgress.setText(StringUtils.join(String.valueOf(tutorialShortcut.getCurrentTask()), "/", String.valueOf(tutorialShortcut.getMaxTasks()) ));
+    holder.progress.setText(StringUtils.join(String.valueOf(tutorialShortcut.getCurrentTask()), "/", String.valueOf(tutorialShortcut.getMaxTasks()) ));
 
 
   }

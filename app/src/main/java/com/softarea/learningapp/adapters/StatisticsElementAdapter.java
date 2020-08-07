@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.model.StatisticsElement;
-import com.softarea.learningapp.model.TutorialShortcut;
-import com.softarea.learningapp.utils.StringUtils;
 
 import java.util.List;
 
@@ -21,15 +19,15 @@ public class StatisticsElementAdapter extends RecyclerView.Adapter<StatisticsEle
   private List<StatisticsElement> statisticsElements;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
-    public TextView statisticsTitle;
-    public TextView statisticsAmount;
-    public ImageView statisticImage;
+    public TextView title;
+    public TextView amount;
+    public ImageView image;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
-      statisticsTitle = itemView.findViewById(R.id.statistics_title);
-      statisticsAmount = itemView.findViewById(R.id.statistics_amount);
-      statisticImage = itemView.findViewById(R.id.statistics_image);
+      title = itemView.findViewById(R.id.statistics_title);
+      amount = itemView.findViewById(R.id.statistics_amount);
+      image = itemView.findViewById(R.id.statistics_image);
     }
   }
 
@@ -49,9 +47,9 @@ public class StatisticsElementAdapter extends RecyclerView.Adapter<StatisticsEle
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     StatisticsElement statisticsElement = statisticsElements.get(position);
-    holder.statisticsTitle.setText(statisticsElement.getName());
-    holder.statisticsAmount.setText(String.valueOf(statisticsElement.getAmount()));
-    holder.statisticImage.setImageResource(statisticsElement.getIcon());
+    holder.title.setText(statisticsElement.getName());
+    holder.amount.setText(String.valueOf(statisticsElement.getAmount()));
+    holder.image.setImageResource(statisticsElement.getIcon());
 
   }
 

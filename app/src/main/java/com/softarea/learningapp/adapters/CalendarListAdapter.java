@@ -1,6 +1,5 @@
 package com.softarea.learningapp.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softarea.learningapp.R;
-import com.softarea.learningapp.model.CalendarEvent;
+import com.softarea.learningapp.model.Event;
 import com.softarea.learningapp.utils.CalendarUtils;
 import com.softarea.learningapp.utils.StringUtils;
 
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapter.ViewHolder> {
 
-  private List<CalendarEvent> calendarEvents;
+  private List<Event> events;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public TextView calendarEventDay;
@@ -37,8 +36,8 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     }
   }
 
-  public CalendarListAdapter(List<CalendarEvent> tutorialShortcuts) {
-    this.calendarEvents = tutorialShortcuts;
+  public CalendarListAdapter(List<Event> objects) {
+    this.events = objects;
   }
 
   @NonNull
@@ -52,18 +51,18 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    CalendarEvent calendarEvent = calendarEvents.get(position);
+    Event event = events.get(position);
 
-    holder.calendarEventDay.setText(String.format("%02d", calendarEvent.getDay()));
-    holder.calendarEventMonth.setText(CalendarUtils.transformMonth(calendarEvent.getMonth()));
-    holder.calendarEventTime.setText(StringUtils.join(calendarEvent.getEventStartTime(), " - ", calendarEvent.getEventEndTime() ));
-    holder.calendarEventTitle.setText(StringUtils.join(calendarEvent.getAuthor().getFirstName(), " ", calendarEvent.getAuthor().getSurname()));
-    holder.calendarEventTitle.setText(calendarEvent.getTitle());
+    holder.calendarEventDay.setText(String.format("%02d", event.getDay()));
+    holder.calendarEventMonth.setText(CalendarUtils.transformMonth(event.getMonth()));
+    holder.calendarEventTime.setText(StringUtils.join(event.getStartTime(), " - ", event.getEndTime() ));
+    holder.calendarEventTitle.setText(StringUtils.join(event.getAuthor().getFirstName(), " ", event.getAuthor().getSurname()));
+    holder.calendarEventTitle.setText(event.getTitle());
 
   }
 
   @Override
   public int getItemCount() {
-    return calendarEvents.size();
+    return events.size();
   }
 }
