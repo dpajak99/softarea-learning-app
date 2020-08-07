@@ -23,7 +23,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/lato_black"
-                android:text="31"
                 android:textAlignment="center"
                 android:textSize="@dimen/font_large" />
 
@@ -33,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_xsmall"
                 android:fontFamily="@font/lato"
-                android:text="lipiec"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -51,15 +49,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_xsmall"
                 android:fontFamily="@font/lato_bold"
-                android:text="14:00 - 15:00"
                 android:textSize="@dimen/font_small" />
 
             <TextView
-                android:id="@+id/calendar_author_solid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_black"
-                android:text="Autor:"
+                android:text="@string/author"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_small" />
 
@@ -68,7 +64,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
-                android:text="Łukasz Usarz"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_small" />
         </LinearLayout>
@@ -86,7 +81,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
-                android:text="Podsumowanie pierwszego miesiąca praktyk"
                 android:textSize="@dimen/font_small" />
         </LinearLayout>
     </RelativeLayout>

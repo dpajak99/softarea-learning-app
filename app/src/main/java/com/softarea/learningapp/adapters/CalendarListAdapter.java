@@ -1,5 +1,6 @@
 package com.softarea.learningapp.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
 public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapter.ViewHolder> {
 
   private List<Event> events;
+  private Context context;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public TextView calendarEventDay;
@@ -44,7 +46,8 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
   @Override
   public CalendarListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                                int viewType) {
-    LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+    context = parent.getContext();
+    LayoutInflater layoutInflater = LayoutInflater.from(context);
     View listItem = layoutInflater.inflate(R.layout.item_calendar_event, parent, false);
     return new ViewHolder(listItem);
   }
@@ -54,9 +57,9 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     Event event = events.get(position);
 
     holder.calendarEventDay.setText(String.format("%02d", event.getDay()));
-    holder.calendarEventMonth.setText(CalendarUtils.transformMonth(event.getMonth()));
+    holder.calendarEventMonth.setText(CalendarUtils.transformMonth(context, event.getMonth()));
     holder.calendarEventTime.setText(StringUtils.join(event.getStartTime(), " - ", event.getEndTime() ));
-    holder.calendarEventTitle.setText(StringUtils.join(event.getAuthor().getFirstName(), " ", event.getAuthor().getSurname()));
+    holder.calendarEventAuthor.setText(StringUtils.join(event.getAuthor().getFullName()));
     holder.calendarEventTitle.setText(event.getTitle());
 
   }
