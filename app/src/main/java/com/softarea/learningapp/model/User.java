@@ -1,38 +1,29 @@
 package com.softarea.learningapp.model;
 
-public class User {
-  private String firstName;
-  private String surname;
+import java.io.Serializable;
+
+public class User implements Serializable {
+  private int id;
+  private String fullName;
   private String position;
   private int image;
-
-  public User(String firstName, String surname, String position, int image) {
-    this.firstName = firstName;
-    this.surname = surname;
-    this.position = position;
-    this.image = image;
-  }
 
   @Override
   public String toString() {
     return "User{" +
-      "firstName='" + firstName + '\'' +
-      ", surname='" + surname + '\'' +
+      "id=" + id +
+      ", fullName='" + fullName + '\'' +
       ", position='" + position + '\'' +
       ", image=" + image +
       '}';
   }
 
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public String getSurname() {
-    return surname;
+  public int getId() {
+    return id;
   }
 
   public String getFullName() {
-    return firstName + " " + surname;
+    return fullName;
   }
 
   public String getPosition() {
@@ -41,5 +32,12 @@ public class User {
 
   public int getImage() {
     return image;
+  }
+
+  public User(int id, String fullName, String position, int image) {
+    this.id = id;
+    this.fullName = fullName;
+    this.position = position;
+    this.image = image;
   }
 }

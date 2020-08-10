@@ -12,6 +12,10 @@
         <item name="actionMenuTextColor">@color/white</item>
     </style>
 
+    <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
     <style name="scrollbar_shape_style">
         <item name="android:scrollbarAlwaysDrawHorizontalTrack">true</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>

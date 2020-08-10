@@ -56,7 +56,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     holder.calendarEventDay.setText(String.format("%02d", event.getDay()));
     holder.calendarEventMonth.setText(CalendarUtils.transformMonth(event.getMonth()));
     holder.calendarEventTime.setText(StringUtils.join(event.getStartTime(), " - ", event.getEndTime() ));
-    holder.calendarEventTitle.setText(StringUtils.join(event.getAuthor().getFirstName(), " ", event.getAuthor().getSurname()));
+    holder.calendarEventTitle.setText(StringUtils.join(event.getAuthor().getFullName()));
     holder.calendarEventTitle.setText(event.getTitle());
 
   }
