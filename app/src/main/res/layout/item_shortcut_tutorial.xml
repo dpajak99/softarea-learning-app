@@ -18,8 +18,7 @@
         android:textSize="@dimen/font_small"
         android:layout_width="match_parent"
         android:gravity="top|start"
-        android:layout_height="wrap_content"
-        android:text="TEST" />
+        android:layout_height="wrap_content"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:gravity="right|bottom"
@@ -38,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="10dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="Jeszcze nie ukończono"
                 android:textAlignment="textEnd" />
             <TextView
                 android:id="@+id/tutorial_progress"
@@ -47,8 +45,7 @@
                 android:textSize="11dp"
                 android:fontFamily="@font/lato_black"
                 android:textColor="@color/light_gray"
-                android:textAlignment="textEnd"
-                android:text="5/20"/>
+                android:textAlignment="textEnd"/>
         </LinearLayout>
 
         <ImageView

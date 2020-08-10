@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Softarea school</string>
+    <string name="title_home">Panel</string>
+    <string name="title_panel_add">Dodaj</string>
+    <string name="title_calendar">Kalendarz</string>
+    <string name="title_notifications">Wiadomości</string>
+    <string name="title_account">Twoje konto</string>
+
+    <string name="title_create_note">Utwórz notatkę</string>
+    <string name="title_notes">Twoje notatki</string>
+    <string name="title_show_note">Notatka</string>
+
+    <string name="tutorial_not_started">Nie rozpoczęto!</string>
+    <string name="tutorial_not_finished">Nie ukończono!</string>
+    <string name="tutorial_finished">Ukończono!</string>
+
+    <string name="note_add">Dodaj nową notatkę</string>
+    <string name="note_create">Zobacz swoje notatki</string>
+    <string name="tasks_show">Zobacz listę zadań na dziś</string>
+
+    <string name="statistics_github_commits">- commity na githubie</string>
+    <string name="statistics_tutorials_added">- dodanych tutoriali</string>
+    <string name="statistics_notes_added">- stworzonych notatek</string>
+    <string name="statistics_realised_tasks">- zrealizowanych zadań</string>
+    <string name="statistics_idea_added">- zapisanych pomysłów na projekt</string>
+
+    <string name="add_note_successful">Pomyślnie dodano notatkę</string>
+    <string name="add_note_error_short_title">Tytuł notatki jest za krótki</string>
+    <string name="add_note_error_short_content">Treść notatki jest za krótka</string>
+
+    <string name="created_at_date">Utworzona dnia:</string>
+    <string name="created_at_time">o godzinie:</string>
+
+    <string name="note_delete_confirm">Jesteś pewny, że chcesz skasować notatkę?</string>
+    <string name="note_delete_successful">Pomyślnie skasowano notatkę</string>
+    <string name="note_delete_error">Wystąpił błąd podczas kasowania notatki. Skontaktuj się z administratorem!</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+
+    <string name="note_hint_title">Tytuł notatki</string>
+    <string name="note_hint_content">Treść notatki</string>
+    <string name="note_content_info">Notatka może zawierać proste znaczniki HTML</string>
+    <string name="note_button_add">Dodaj notatkę</string>
+    <string name="note_more_options">Dodatkowe opcje:</string>
+    <string name="note_add_photo">Dodaj zdjęcia:</string>
+    <string name="note_add_photo_info">(kliknij w obrazek po lewej aby dodać zdjęcia)</string>
+    <string name="note_share">Udostępnij notatkę:</string>
+    <string name="note_share_info">(wpisz identyfikator osoby, której chcesz udostępnić notatkę)</string>
+    <string name="note_share_hint">np.: lusarz"</string>
+    <string name="note_author">Autor notatki:</string>
+
+    <string name="calendar_upcoming">Nadchodzące wydarzenia</string>
+    <string name="show_more">Zobacz więcej</string>
+    <string name="author">Autor:</string>
+
+    <string name="sample_author_name">Dominik Pająk</string>
+    <string name="sample_author_position">SOFTAREA - Junior Android Developer</string>
+    <string name="sample_author_points">365 pkt</string>
+
+    <string name="january">Styczeń</string>
+    <string name="february">Luty</string>
+    <string name="march">Marzec</string>
+    <string name="april">Kwiecień</string>
+    <string name="may">Maj</string>
+    <string name="june">Czerwiec</string>
+    <string name="july">Lipiec</string>
+    <string name="august">Sierpień</string>
+    <string name="september">Wrzesień</string>
+    <string name="october">Październik</string>
+    <string name="november">Listopad</string>
+    <string name="december">Grudzień</string>
+
+    <string name="settings">Ustawienia</string>
+    <string name="logout">Wyloguj</string>
+</resources>

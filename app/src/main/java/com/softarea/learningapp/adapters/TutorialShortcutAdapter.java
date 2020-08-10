@@ -52,13 +52,13 @@ public class TutorialShortcutAdapter extends RecyclerView.Adapter<TutorialShortc
     TutorialShortcut tutorialShortcut = tutorialShortcuts.get(position);
     holder.title.setText(tutorialShortcut.getTitle());
     if( tutorialShortcut.getCurrentTask() == 0 ) {
-      holder.statusMessage.setText("Nie rozpoczęto!");
+      holder.statusMessage.setText(R.string.tutorial_not_started);
       holder.statusImage.setImageResource(R.drawable.ic_not_finished);
     } else if( tutorialShortcut.getCurrentTask() < tutorialShortcut.getMaxTasks() ) {
-      holder.statusMessage.setText("Nie ukończono!");
+      holder.statusMessage.setText(R.string.tutorial_not_finished);
       holder.statusImage.setImageResource(R.drawable.ic_not_finished);
     } else {
-      holder.statusMessage.setText("Ukończono!");
+      holder.statusMessage.setText(R.string.tutorial_finished);
       holder.statusImage.setImageResource(R.drawable.ic_ok);
     }
 

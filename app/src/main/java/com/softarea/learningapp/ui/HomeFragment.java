@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.softarea.learningapp.activities.MainActivity;
 import com.softarea.learningapp.R;
+import com.softarea.learningapp.activities.MainActivity;
 import com.softarea.learningapp.adapters.CalendarListAdapter;
 import com.softarea.learningapp.adapters.StatisticsElementAdapter;
 import com.softarea.learningapp.adapters.TutorialShortcutAdapter;
@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
     tutorialsShortcutList.setAdapter(tutorialShortcutAdapter);
 
     RecyclerView statisticsElementList = root.findViewById(R.id.list_statistic);
-    StatisticsElementAdapter statisticsElementAdapter = new StatisticsElementAdapter(StatisticsElementDAO.getData());
+    StatisticsElementAdapter statisticsElementAdapter = new StatisticsElementAdapter(StatisticsElementDAO.getData(requireContext()));
     statisticsElementList.setHasFixedSize(true);
     statisticsElementList.setLayoutManager(new LinearLayoutManager(getActivity()));
     statisticsElementList.setAdapter(statisticsElementAdapter);

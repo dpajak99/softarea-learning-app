@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
-            android:text="Dodaj nową notatkę:" />
+            android:text="@string/note_add" />
 
         <EditText
             android:id="@+id/note_create_title"
@@ -22,7 +22,7 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:background="@drawable/input"
             android:fontFamily="@font/lato"
-            android:hint="Tytuł notatki"
+            android:hint="@string/note_hint_title"
             android:padding="@dimen/margin_small"
             android:textColorHint="#DCDCDC"
             android:textSize="@dimen/font_medium" />
@@ -36,7 +36,7 @@
             android:overScrollMode="never"
             android:fontFamily="@font/lato"
             android:gravity="top"
-            android:hint="Treść notatki"
+            android:hint="@string/note_hint_content"
             android:padding="@dimen/margin_small"
             android:textColorHint="#DCDCDC"
             android:textSize="@dimen/font_medium" />
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="* Notatka może zawierać proste znaczniki HTML:"
+            android:text="@string/note_content_info"
             android:textColor="@color/light_gray"
             android:textSize="@dimen/font_xsmall" />
 
@@ -58,7 +58,7 @@
             <Button
                 android:id="@+id/button_create_note"
                 style="@style/ButtonDefault"
-                android:text="Dodaj" />
+                android:text="@string/note_button_add" />
         </LinearLayout>
         <TextView
             style="@style/HeadingStyle"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
-            android:text="Opcje dodatkowe:" />
+            android:text="@string/note_more_options" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_toEndOf="@id/button_add_image"
                 android:gravity="center_vertical"
-                android:text="Dodaj zdjęcia:"
+                android:text="@string/note_add_photo"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_small" />
 
@@ -97,7 +97,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_toEndOf="@id/button_add_image"
                 android:gravity="center_vertical"
-                android:text="(kliknij w obrazek po lewej aby dodać zdjęcia)"
+                android:text="@string/note_add_photo_info"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_xsmall" />
         </RelativeLayout>
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_small"
                 android:gravity="center_vertical"
-                android:text="Udostępnij notatkę:"
+                android:text="@string/note_share"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_small" />
 
@@ -121,7 +121,7 @@
                 android:layout_below="@id/const_share_note"
                 android:layout_marginStart="@dimen/margin_small"
                 android:gravity="center_vertical"
-                android:text="(wpisz identyfikator osoby, której chcesz udostępnić notatkę)"
+                android:text="@string/note_share_info"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_xsmall" />
         </RelativeLayout>
@@ -131,7 +131,7 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:background="@drawable/input"
             android:fontFamily="@font/lato"
-            android:hint="np.: lusarz"
+            android:hint="@string/note_share_hint"
             android:padding="@dimen/margin_small"
             android:textColorHint="#DCDCDC"
             android:textSize="@dimen/font_medium" />
