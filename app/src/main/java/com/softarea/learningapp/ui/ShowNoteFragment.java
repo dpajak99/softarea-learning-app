@@ -45,21 +45,21 @@ public class ShowNoteFragment extends Fragment {
     noteAuthorName.setText(note.getAuthor().getFullName());
     noteTitle.setText(note.getTitle());
     noteContent.setText(note.getContent());
-    noteDate.setText(StringUtils.join("Utworzona dnia: " + DateUtils.parseDate(note.getCreatedAt()), " o godzinie "+ DateUtils.parseTime(note.getCreatedAt())));
+    noteDate.setText(StringUtils.join(requireContext().getString(R.string.created_at_date), " ", DateUtils.parseDate(note.getCreatedAt()), " ", requireContext().getString(R.string.created_at_time), " ", DateUtils.parseTime(note.getCreatedAt())));
 
     deleteNote.setOnClickListener(view -> {
       new AlertDialog.Builder(requireContext())
-        .setTitle("Softarea - School")
-        .setMessage("Jesteś pewny, że chcesz skasować notatkę?")
-        .setPositiveButton("Tak", (dialog, which) -> {
+        .setTitle(R.string.app_name)
+        .setMessage(R.string.note_delete_confirm)
+        .setPositiveButton(R.string.yes, (dialog, which) -> {
           if(NotesDAO.deleteNote(requireContext(), note.getId())) {
             navController.navigate(R.id.navigation_notes);
-            Toast.makeText(requireContext(), "Pomyślnie skasowano notatkę", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), R.string.note_delete_successful, Toast.LENGTH_LONG).show();
           } else {
-            Toast.makeText(requireContext(), "Wystąpił błąd podczas kasowania notatki. Skontaktuj się z administratorem!", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), R.string.note_delete_error, Toast.LENGTH_LONG).show();
           }
         })
-        .setNegativeButton("Nie", null)
+        .setNegativeButton(R.string.no, null)
         .setIcon(R.drawable.ic_delete)
         .show();
     });

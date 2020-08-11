@@ -54,13 +54,14 @@
                     android:id="@+id/text_p1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_small"
                     android:layout_weight="1"
-                    android:text="Nadchodzące wydarzenia"
+                    android:text="@string/calendar_upcoming"
                     style="@style/HeadingStyle"/>
 
                 <Button
                     style="@style/ButtonDefault"
-                    android:text="Zobacz więcej"
+                    android:text="@string/show_more"
                     android:layout_marginTop="@dimen/margin_small" />
             </LinearLayout>
 

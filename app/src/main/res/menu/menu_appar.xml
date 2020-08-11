@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:title="Ustawienia" />
+        android:title="@string/settings" />
     <item
         android:id="@+id/navigation_panel_add"
-        android:title="Wyloguj" />
+        android:title="@string/logout" />
 </menu>

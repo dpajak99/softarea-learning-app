@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     setUserSettings();
 
 
-    ToolbarShortcutAdapter toolbarShortcutAdapter = new ToolbarShortcutAdapter(ToolbarShortcutDAO.getData());
+    ToolbarShortcutAdapter toolbarShortcutAdapter = new ToolbarShortcutAdapter(ToolbarShortcutDAO.getData(getApplicationContext()));
 
     toolbarShortcutsList.setLayoutManager(new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false));
     toolbarShortcutsList.setHasFixedSize(true);

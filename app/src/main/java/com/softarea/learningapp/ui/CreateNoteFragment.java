@@ -55,7 +55,7 @@ public class CreateNoteFragment extends Fragment {
       Bundle bundle = new Bundle();
       bundle.putSerializable("note", note);
       navController.navigate(R.id.navigation_show_note, bundle);
-      Toast.makeText(requireContext(), "Pomyślnie dodano notatkę", Toast.LENGTH_LONG).show();
+      Toast.makeText(requireContext(), R.string.add_note_successful, Toast.LENGTH_LONG).show();
     }
   }
 
@@ -66,13 +66,13 @@ public class CreateNoteFragment extends Fragment {
 
   private boolean checkInputs() {
     if(String.valueOf(title.getText()).length() < 2 ) {
-      Toast.makeText(requireContext(), "Tytuł notatki jest za krótki", Toast.LENGTH_LONG).show();
+      Toast.makeText(requireContext(), R.string.add_note_error_short_title, Toast.LENGTH_LONG).show();
       return false;
     }
 
     if(String.valueOf(content.getText()).length() < 2 ) {
       //TODO: Check the note for SQL Injection and wrong HTML Tags
-      Toast.makeText(requireContext(), "Treść notatki jest za krótka", Toast.LENGTH_LONG).show();
+      Toast.makeText(requireContext(), R.string.add_note_error_short_content, Toast.LENGTH_LONG).show();
       return false;
     }
 
