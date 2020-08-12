@@ -8,9 +8,10 @@ import com.softarea.learningapp.sqlite.DBManager;
 import java.util.List;
 
 public class NotesDAO {
-  public static void createNote(Context context, Note note ) {
+  public static void createNote(Context context, Note note) {
     DBManager dbManager = new DBManager(context);
     dbManager.addNote(note);
+    note.setId(NotesDAO.getLastId(context));
   }
 
   public static List<Note> getNotes(Context context) {

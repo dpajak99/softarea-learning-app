@@ -51,7 +51,8 @@ public class TokenUtils {
     return encodedToken;
   }
 
-  public static boolean validateToken(EncodedToken encodedToken) {
+  public static boolean validateToken(String token) {
+    EncodedToken encodedToken = encodeToken(token);
     Log.i(TAG, "encodedToken");
     Calendar currentDate = Calendar.getInstance();
     if (encodedToken.getYear() < currentDate.get(Calendar.YEAR)) {

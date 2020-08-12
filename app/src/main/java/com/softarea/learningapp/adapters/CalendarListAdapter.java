@@ -38,8 +38,8 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     }
   }
 
-  public CalendarListAdapter(List<Event> objects) {
-    this.events = objects;
+  public CalendarListAdapter(List<Event> events) {
+    this.events = events;
   }
 
   @NonNull

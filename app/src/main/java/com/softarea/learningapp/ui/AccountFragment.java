@@ -13,19 +13,9 @@ import com.softarea.learningapp.R;
 import com.softarea.learningapp.activities.MainActivity;
 
 public class AccountFragment extends Fragment {
-  View root;
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
-    root = inflater.inflate(R.layout.fragment_account, container, false);
-
+    View root = inflater.inflate(R.layout.fragment_account, container, false);
     return root;
-  }
-
-  private void initStartSettings() {
-    MainActivity.setExpandAndCollapseEnabled( false);
-
-    AppBarLayout appBarLayout = MainActivity.appBarLayout;
-    appBarLayout.setExpanded(false, false);
-    appBarLayout.setBackgroundResource(R.color.backgroundColor);
   }
 }

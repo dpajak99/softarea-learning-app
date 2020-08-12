@@ -13,21 +13,10 @@ import com.softarea.learningapp.activities.MainActivity;
 import com.softarea.learningapp.R;
 
 public class PanelAddFragment extends Fragment {
-  View root;
-
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
-    root = inflater.inflate(R.layout.fragment_panel_add, container, false);
-
-    initStartSettings();
+    View root = inflater.inflate(R.layout.fragment_panel_add, container, false);
 
     return root;
-  }
-
-  private void initStartSettings() {
-    MainActivity.setExpandAndCollapseEnabled( false);
-    AppBarLayout appBarLayout = MainActivity.appBarLayout;
-    appBarLayout.setExpanded(false, false);
-    appBarLayout.setBackgroundResource(R.color.backgroundColor);
   }
 }

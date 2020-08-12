@@ -10,8 +10,7 @@ public class Note implements Serializable {
   private User author;
   private Date createdAt;
 
-  public Note(int id, String title, String content, User author, Date created_at) {
-    this.id = id;
+  public Note(String title, String content, User author, Date created_at) {
     this.title = title;
     this.content = content;
     this.author = author;
