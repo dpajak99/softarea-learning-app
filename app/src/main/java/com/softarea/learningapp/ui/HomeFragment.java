@@ -21,19 +21,10 @@ import com.softarea.learningapp.dao.StatisticsElementDAO;
 import com.softarea.learningapp.dao.TutorialShortcutDAO;
 
 public class HomeFragment extends Fragment {
-  private View root;
-
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
-    root = inflater.inflate(R.layout.fragment_home, container, false);
-    initStartSettings();
-    initLists();
+    View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-    return root;
-  }
-
-  private void initLists() {
     RecyclerView calendarEventsList = root.findViewById(R.id.list_calendar);
     CalendarListAdapter calendarListAdapter = new CalendarListAdapter(EventsDAO.getData());
     calendarEventsList.setHasFixedSize(true);
@@ -52,13 +43,7 @@ public class HomeFragment extends Fragment {
     statisticsElementList.setHasFixedSize(true);
     statisticsElementList.setLayoutManager(new LinearLayoutManager(getActivity()));
     statisticsElementList.setAdapter(statisticsElementAdapter);
-  }
 
-  private void initStartSettings() {
-    MainActivity.setExpandAndCollapseEnabled(true);
-
-    AppBarLayout appBarLayout = MainActivity.appBarLayout;
-    appBarLayout.setExpanded(true, false);
-    appBarLayout.setBackgroundResource(R.color.below_toolbar);
+    return root;
   }
 }

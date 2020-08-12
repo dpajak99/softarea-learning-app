@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softarea.learningapp.R;
@@ -15,10 +18,10 @@ import com.softarea.learningapp.model.ToolbarShortcut;
 
 import java.util.List;
 
-import static com.softarea.learningapp.activities.MainActivity.navController;
 
 public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcutAdapter.ViewHolder> {
 
+  private final FragmentActivity activity;
   private List<ToolbarShortcut> toolbarShortcuts;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -34,7 +37,8 @@ public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcut
     }
   }
 
-  public ToolbarShortcutAdapter(List<ToolbarShortcut> objects) {
+  public ToolbarShortcutAdapter(FragmentActivity activity, List<ToolbarShortcut> objects) {
+    this.activity = activity;
     this.toolbarShortcuts = objects;
   }
 
@@ -50,6 +54,7 @@ public class ToolbarShortcutAdapter extends RecyclerView.Adapter<ToolbarShortcut
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     ToolbarShortcut object = toolbarShortcuts.get(position);
+    NavController navController = Navigation.findNavController(activity, R.id.fragment_main);
     holder.contentHolder.setOnClickListener(v -> navController.navigate(object.getHref()));
     holder.title.setText(object.getTitle());
     holder.icon.setBackgroundResource(object.getImage());

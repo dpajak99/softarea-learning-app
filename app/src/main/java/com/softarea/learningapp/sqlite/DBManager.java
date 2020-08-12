@@ -113,12 +113,12 @@ public class DBManager {
     Cursor c = db.rawQuery("SELECT * FROM NOTES ORDER BY id DESC", null);
     while (c.moveToNext()) {
       Note note = new Note(
-        c.getInt(c.getColumnIndex("id")),
         c.getString(c.getColumnIndex("title")),
         c.getString(c.getColumnIndex("content")),
         new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile),
         new Date(c.getString(c.getColumnIndex("date"))));
 
+      note.setId(c.getInt(c.getColumnIndex("id")));
       Log.i("TEST", "NOTE: " + note.toString());
       list.add(note);
     }
