@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.softarea.learningapp.R;
-import com.softarea.learningapp.dao.LoginDAO;
 import com.softarea.learningapp.model.EncodedToken;
 import com.softarea.learningapp.model.User;
 import com.softarea.learningapp.sqlite.DBManager;
+import com.softarea.learningapp.utils.TokenUtils;
 
 public class SplashScreenActivity extends AppCompatActivity {
   @Override
@@ -49,9 +49,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     String token = dbManager.getLocalToken();
     Log.i("TEST", "TOKEN " + token);
-    EncodedToken encodedToken = LoginDAO.encodeToken(token);
+    EncodedToken encodedToken = TokenUtils.encodeToken(token);
     Log.i("TEST", encodedToken.toString());
-    if(LoginDAO.validateToken(encodedToken)) {
+    if(TokenUtils.validateToken(encodedToken)) {
       User user = dbManager.getUser(token);
 
       Intent intent = new Intent(getApplicationContext(), MainActivity.class);

@@ -10,9 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.softarea.learningapp.R;
-import com.softarea.learningapp.dao.LoginDAO;
 import com.softarea.learningapp.model.User;
 import com.softarea.learningapp.sqlite.DBManager;
+import com.softarea.learningapp.utils.TokenUtils;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     Log.i(TAG, "GETTED USER ID : " + String.valueOf(id));
 
     if (id != 0) {
-      String token = LoginDAO.createToken(id);
+      String token = TokenUtils.createToken(id);
       Log.i(TAG, "Created token");
       dbManager.updateToken(token, id);
       Log.i(TAG, "Updated token");
