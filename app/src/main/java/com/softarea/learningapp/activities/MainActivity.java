@@ -1,8 +1,11 @@
 package com.softarea.learningapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,7 +22,10 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.adapters.ToolbarShortcutAdapter;
+import com.softarea.learningapp.components.ImageViewRounded;
+import com.softarea.learningapp.dao.LoginDAO;
 import com.softarea.learningapp.dao.ToolbarShortcutDAO;
+import com.softarea.learningapp.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,13 +40,21 @@ public class MainActivity extends AppCompatActivity {
   /*-------------------------------------*/
   public static AppBarLayout appBarLayout;
 
+
+  User user;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    Bundle bundle = getIntent().getExtras();
+    assert bundle != null;
+    user = (User) bundle.getSerializable("user");
+
     initViews();
     initStartSettings();
+    setUserSettings();
 
 
     ToolbarShortcutAdapter toolbarShortcutAdapter = new ToolbarShortcutAdapter(ToolbarShortcutDAO.getData(getApplicationContext()));
@@ -69,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+  }
+
+  private void setUserSettings() {
+    ImageViewRounded profileImage = findViewById(R.id.profile_image);
+    TextView profileName = findViewById(R.id.profile_name);
+    TextView profilePosition = findViewById(R.id.profile_position);
+
+    profileImage.setImageResource(user.getImage());
+    profileName.setText(user.getFullName());
+    profilePosition.setText(user.getPosition());
   }
 
   public static void setExpandAndCollapseEnabled(boolean enabled) { ;
@@ -102,11 +126,35 @@ public class MainActivity extends AppCompatActivity {
     NavigationUI.setupWithNavController(bottomNavigationView, navController);
   }
 
+  private void logout() {
+    LoginDAO.logout(getApplicationContext());
+
+    Intent intent = new Intent(MainActivity.this,
+      LoginActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+      Intent.FLAG_ACTIVITY_CLEAR_TASK |
+      Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu_appar, menu);
+
     return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+      case R.id.navigation_panel_add:
+        logout();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 
   @Override

@@ -34,7 +34,7 @@ public class CreateNoteFragment extends Fragment {
     root = inflater.inflate(R.layout.fragment_create_note, container, false);
     initStartSettings();
 
-    author = new User("Dominik", "Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile);
+    author = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile);
     title = root.findViewById(R.id.note_create_title);
     content = root.findViewById(R.id.note_create_content);
     Button buttonCreateNote = root.findViewById(R.id.button_create_note);

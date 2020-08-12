@@ -22,6 +22,19 @@ public class DBHelper extends SQLiteOpenHelper {
           "       content VARCHAR, " +
           "       date DATETIME, " +
           "       author VARCHAR)");
+
+        db.execSQL("CREATE TABLE USERS" +
+          "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+          "       fullname VARCHAR, " +
+          "       position VARCHAR, " +
+          "       email VARCHAR, " +
+          "       password VARCHAR, " +
+          "       image INTEGER, " +
+          "       token VARCHAR)");
+
+        db.execSQL("CREATE TABLE TOKEN" +
+          "       (token VARCHAR," +
+          "id INTEGER)");
     }
 
     @Override
