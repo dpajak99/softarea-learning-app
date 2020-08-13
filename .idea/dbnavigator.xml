@@ -49,7 +49,7 @@ from
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="3e603889-9533-489b-bd7e-78a7da22c462" dataset="main.NOTES" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="3e603889-9533-489b-bd7e-78a7da22c462" dataset="main.USERS" active-filter-id="">
+    <filter-actions connection-id="3e603889-9533-489b-bd7e-78a7da22c462" dataset="main.USERS" active-filter-id="EMPTY_FILTER">
       <filter id="82d1874c-326f-4610-a04a-032172da154d" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="id" operator="=" value="" active="true" />
       </filter>

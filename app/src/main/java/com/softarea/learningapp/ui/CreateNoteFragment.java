@@ -15,7 +15,6 @@ import androidx.navigation.Navigation;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.model.Note;
-import com.softarea.learningapp.model.User;
 import com.softarea.learningapp.utils.BundleUtils;
 import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.ValidationUtils;
@@ -42,7 +41,6 @@ public class CreateNoteFragment extends Fragment {
 
   private void createNote() {
     if (checkInputs()) {
-      User author = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile);
       Note note = new Note(title.getText().toString(), content.getText().toString(), 0, new Date().toString());
 
       DatabaseUtils.getDatabase(getContext()).notesDAO().insert(note);

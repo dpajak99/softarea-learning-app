@@ -22,7 +22,7 @@ public class NotesFragment extends Fragment {
     RecyclerView notesList = root.findViewById(R.id.list_notes);
     notesList.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
-    NotesAdapter notesAdapter = new NotesAdapter(getActivity(), DatabaseUtils.getDatabase(getContext()).notesDAO().getAll());
+    NotesAdapter notesAdapter = new NotesAdapter(getContext(), getActivity(), DatabaseUtils.getDatabase(getContext()).notesDAO().getAll());
     notesList.setHasFixedSize(true);
     notesList.setAdapter(notesAdapter);
 
