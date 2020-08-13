@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +12,7 @@ import com.softarea.learningapp.dao.TokenDAO;
 import com.softarea.learningapp.dao.UserDAO;
 import com.softarea.learningapp.model.Token;
 import com.softarea.learningapp.model.User;
+import com.softarea.learningapp.consts.AlertConst;
 import com.softarea.learningapp.utils.BundleUtils;
 import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.TokenUtils;
@@ -41,15 +41,15 @@ public class LoginActivity extends AppCompatActivity {
     UserDAO userDAO = DatabaseUtils.getDatabase(getApplicationContext()).userDAO();
     TokenDAO tokenDAO = DatabaseUtils.getDatabase(getApplicationContext()).tokenDAO();
 
-    if (userDAO.checkLoginData(email, password) == 1) {
+    if (userDAO.checkLoginData(email, password) == DatabaseUtils.USER_EXIST) {
         User user = userDAO.getUser(email, password);
         String token = TokenUtils.createToken(user.getId());
-        if(tokenDAO.checkTokenExist() == 1) {
+        if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_EXIST) {
           tokenDAO.updateLocalToken(token);
-        } else if(tokenDAO.checkTokenExist() == 0 ) {
+        } else if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_NOT_FOUND ) {
           tokenDAO.createLocalToken(new Token(0, token));
         } else {
-          Toast.makeText(getApplicationContext(), "Błąd systemu (token), skontaktuj się z administratorem", Toast.LENGTH_LONG).show();
+          AlertConst.alert(getApplicationContext(), AlertConst.MORE_THAN_ONE_TOKEN);
         }
 
         userDAO.updateToken(token, user.getId());
@@ -59,10 +59,10 @@ public class LoginActivity extends AppCompatActivity {
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         getApplicationContext().startActivity(intent);
 
-      } else if (userDAO.checkLoginData(email, password) == 0) {
-        Toast.makeText(getApplicationContext(), "Błędne hasło lub login", Toast.LENGTH_LONG).show();
+      } else if (userDAO.checkLoginData(email, password) == DatabaseUtils.USER_NOT_FOUND) {
+        AlertConst.alert(getApplicationContext(), AlertConst.USER_NOT_FOUND);
       } else {
-        Toast.makeText(getApplicationContext(), "Błąd systemu (logowanie), skontaktuj się z administratorem", Toast.LENGTH_LONG).show();
+        AlertConst.alert(getApplicationContext(), AlertConst.MORE_THAN_ONE_USER);
       }
     }
   }

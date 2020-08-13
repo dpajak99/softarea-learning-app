@@ -1,4 +1,4 @@
-package com.softarea.learningapp;
+package com.softarea.learningapp.database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

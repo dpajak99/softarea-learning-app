@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,12 +12,14 @@ import com.softarea.learningapp.dao.TokenDAO;
 import com.softarea.learningapp.dao.UserDAO;
 import com.softarea.learningapp.model.Token;
 import com.softarea.learningapp.model.User;
+import com.softarea.learningapp.consts.AlertConst;
 import com.softarea.learningapp.utils.AnimationUtils;
 import com.softarea.learningapp.utils.BundleUtils;
 import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.TokenUtils;
 
 public class SplashScreenActivity extends AppCompatActivity {
+  Intent intent;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -43,17 +44,19 @@ public class SplashScreenActivity extends AppCompatActivity {
     UserDAO userDAO = DatabaseUtils.getDatabase(getApplicationContext()).userDAO();
     Token token = tokenDAO.getLocalToken();
 
-    Intent intent;
-    if(tokenDAO.checkTokenExist() == 1) {
+    if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_EXIST) {
       if(TokenUtils.validateToken(token.getToken())) {
         intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtras(BundleUtils.createSerializableBundle("user", userDAO.getUser(token.getToken())));
       } else {
-        Toast.makeText(getApplicationContext(), "Twoja sesja wygasła. Zaloguj się ponownie", Toast.LENGTH_LONG).show();
+        AlertConst.alert(getApplicationContext(), AlertConst.SESSION_EXPIRED);
+
         intent = new Intent(getApplicationContext(), LoginActivity.class);
       }
-    } else {
+    } else if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_NOT_FOUND){
       intent = new Intent(getApplicationContext(), LoginActivity.class);
+    } else {
+      AlertConst.alert(getApplicationContext(), AlertConst.MORE_THAN_ONE_TOKEN);
     }
 
     final Handler handler = new Handler();
