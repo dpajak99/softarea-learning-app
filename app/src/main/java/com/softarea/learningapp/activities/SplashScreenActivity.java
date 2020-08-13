@@ -1,18 +1,13 @@
 package com.softarea.learningapp.activities;
 
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.softarea.learningapp.R;
-import com.softarea.learningapp.model.EncodedToken;
-import com.softarea.learningapp.model.User;
 import com.softarea.learningapp.sqlite.DBManager;
 import com.softarea.learningapp.utils.AnimationUtils;
 import com.softarea.learningapp.utils.BundleUtils;
@@ -26,19 +21,20 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     ImageView logoView = findViewById(R.id.logo);
 
-    /****************************************/
-    /*User user = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.dpajak);
-    DBManager dbManager = new DBManager(getApplicationContext());
-    dbManager.addUser(user, "dominik", "123");
-    user = new User(0, "Łukasz Usarz", "SOFTAREA - SEO", R.drawable.lusarz);
-    dbManager.addUser(user, "lusarz", "123");*/
-    /****************************************/
+
 
 
     AnimationUtils.createPulsarLogo(logoView);
 
     DBManager dbManager = new DBManager(getApplicationContext());
     dbManager.setLocalToken("000");
+
+    /****************************************/
+    /*User user = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.dpajak);
+    dbManager.addUser(user, "dominik", "123");
+    user = new User(0, "Łukasz Usarz", "SOFTAREA - SEO", R.drawable.lusarz);
+    dbManager.addUser(user, "lusarz", "123");*/
+    /****************************************/
 
     String token = dbManager.getLocalToken();
 

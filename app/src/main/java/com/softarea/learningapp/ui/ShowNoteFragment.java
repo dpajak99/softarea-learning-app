@@ -16,9 +16,8 @@ import androidx.navigation.Navigation;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.components.ImageViewRounded;
-import com.softarea.learningapp.dao.NotesDAO;
 import com.softarea.learningapp.model.Note;
-import com.softarea.learningapp.utils.DateUtils;
+import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.StringUtils;
 
 public class ShowNoteFragment extends Fragment {
@@ -34,24 +33,23 @@ public class ShowNoteFragment extends Fragment {
     TextView noteDate = root.findViewById(R.id.note_date);
     Note note = (Note) this.getArguments().getSerializable("note");
 
-    noteAuthorImage.setImageResource(note.getAuthor().getImage());
-    noteAuthorName.setText(note.getAuthor().getFullName());
+
+    /*noteAuthorImage.setImageResource(note.getAuthor().getImage());
+    noteAuthorName.setText(note.getAuthor().getFullName());*/
     noteTitle.setText(note.getTitle());
     noteContent.setText(note.getContent());
-    noteDate.setText(StringUtils.join(requireContext().getString(R.string.created_at_date), " ", DateUtils.parseDate(note.getCreatedAt()), " ", requireContext().getString(R.string.created_at_time), " ", DateUtils.parseTime(note.getCreatedAt())));
+    noteDate.setText(StringUtils.join(requireContext().getString(R.string.created_at_date), " ", note.getCreatedAt(), " ", requireContext().getString(R.string.created_at_time), " ", note.getCreatedAt()));
 
     deleteNote.setOnClickListener(view -> {
       new AlertDialog.Builder(requireContext())
         .setTitle(R.string.app_name)
         .setMessage(R.string.note_delete_confirm)
         .setPositiveButton(R.string.yes, (dialog, which) -> {
-          if(NotesDAO.deleteNote(requireContext(), note.getId())) {
-            NavController navController = Navigation.findNavController(getActivity(), R.id.fragment_main);
-            navController.navigate(R.id.navigation_notes);
-            Toast.makeText(requireContext(), R.string.note_delete_successful, Toast.LENGTH_LONG).show();
-          } else {
-            Toast.makeText(requireContext(), R.string.note_delete_error, Toast.LENGTH_LONG).show();
-          }
+          DatabaseUtils.getDatabase(getContext()).notesDAO().delete(note);
+
+          NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment_main);
+          navController.navigate(R.id.navigation_notes);
+          Toast.makeText(requireContext(), R.string.note_delete_successful, Toast.LENGTH_LONG).show();
         })
         .setNegativeButton(R.string.no, null)
         .setIcon(R.drawable.ic_delete)

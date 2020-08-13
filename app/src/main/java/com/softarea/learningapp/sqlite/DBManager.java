@@ -5,12 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.softarea.learningapp.R;
 import com.softarea.learningapp.model.Note;
 import com.softarea.learningapp.model.User;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DBManager {
@@ -23,7 +21,7 @@ public class DBManager {
     db = helper.getWritableDatabase();
   }
 
-  public void addNote(Note note) {
+  /*public void addNote(Note note) {
     db.beginTransaction();
     try {
       db.execSQL("INSERT INTO NOTES VALUES(?,?,?, ?, ?)",
@@ -34,7 +32,7 @@ public class DBManager {
     } finally {
       db.endTransaction();
     }
-  }
+  }*/
 
   public void addUser(User user, String email, String password) {
     Log.i(TAG, "addUser: start");
@@ -115,8 +113,8 @@ public class DBManager {
       Note note = new Note(
         c.getString(c.getColumnIndex("title")),
         c.getString(c.getColumnIndex("content")),
-        new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.demo_profile),
-        new Date(c.getString(c.getColumnIndex("date"))));
+        0,
+        c.getString(c.getColumnIndex("date")));
 
       note.setId(c.getInt(c.getColumnIndex("id")));
       Log.i("TEST", "NOTE: " + note.toString());

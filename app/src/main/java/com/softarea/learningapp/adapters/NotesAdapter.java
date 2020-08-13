@@ -1,6 +1,5 @@
 package com.softarea.learningapp.adapters;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.model.Note;
 import com.softarea.learningapp.utils.BundleUtils;
-import com.softarea.learningapp.utils.DateUtils;
 import com.softarea.learningapp.utils.StringUtils;
 
 import java.util.List;
@@ -63,9 +61,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
   public void onBindViewHolder(ViewHolder holder, int position) {
     Note note = notes.get(position);
     holder.title.setText(note.getTitle());
-    holder.authorName.setText(note.getAuthor().getFullName());
-    holder.authorImage.setImageResource(note.getAuthor().getImage());
-    holder.date.setText(StringUtils.join(DateUtils.parseDate(note.getCreatedAt()), " \n",DateUtils.parseTime(note.getCreatedAt())));
+    /*holder.authorName.setText(note.getAuthor().getFullName());
+    holder.authorImage.setImageResource(note.getAuthor().getImage());*/
+    holder.date.setText(StringUtils.join(note.getCreatedAt(), " \n",note.getCreatedAt()));
 
     holder.contentHolder.setOnClickListener(view -> {
       NavController navController = Navigation.findNavController(activity, R.id.fragment_main);
