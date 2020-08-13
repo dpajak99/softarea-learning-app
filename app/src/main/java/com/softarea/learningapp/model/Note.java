@@ -17,13 +17,16 @@ public class Note implements Serializable {
   @ColumnInfo(name = "author")
   private int author;
   @ColumnInfo(name = "date")
-  private String createdAt;
+  private String date;
+  @ColumnInfo(name = "time")
+  private String time;
 
-  public Note(String title, String content, int author, String createdAt) {
+  public Note(String title, String content, int author, String date, String time) {
     this.title = title;
     this.content = content;
     this.author = author;
-    this.createdAt = createdAt;
+    this.date = date;
+    this.time = time;
   }
 
   public int getId() {
@@ -46,8 +49,12 @@ public class Note implements Serializable {
     return author;
   }
 
-  public String getCreatedAt() {
-    return createdAt;
+  public String getDate() {
+    return date;
+  }
+
+  public String getTime() {
+    return time;
   }
 
 

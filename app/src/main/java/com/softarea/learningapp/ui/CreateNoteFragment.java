@@ -14,12 +14,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.softarea.learningapp.R;
+import com.softarea.learningapp.consts.UserPreferences;
 import com.softarea.learningapp.model.Note;
 import com.softarea.learningapp.utils.BundleUtils;
+import com.softarea.learningapp.utils.CalendarUtils;
 import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.ValidationUtils;
-
-import java.util.Date;
 
 
 public class CreateNoteFragment extends Fragment {
@@ -41,7 +41,12 @@ public class CreateNoteFragment extends Fragment {
 
   private void createNote() {
     if (checkInputs()) {
-      Note note = new Note(title.getText().toString(), content.getText().toString(), 0, new Date().toString());
+      Note note = new Note(
+        title.getText().toString(),
+        content.getText().toString(),
+        UserPreferences.getInstance(getContext()).getInt(UserPreferences.USER_ID, UserPreferences.ERROR_NOT_FOUND_INT),
+        CalendarUtils.getCurrentDate(),
+        CalendarUtils.getCurrentTime());
 
       DatabaseUtils.getDatabase(getContext()).notesDAO().insert(note);
 

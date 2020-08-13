@@ -1,6 +1,7 @@
 package com.softarea.learningapp.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation;
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.components.ImageViewRounded;
 import com.softarea.learningapp.model.Note;
+import com.softarea.learningapp.model.User;
 import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.StringUtils;
 
@@ -25,20 +27,24 @@ public class ShowNoteFragment extends Fragment {
                            ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_show_note, container, false);
 
-    ImageViewRounded noteAuthorImage = root.findViewById(R.id.note_author_image);
-    TextView noteAuthorName = root.findViewById(R.id.note_author_name);
+    ImageViewRounded authorImage = root.findViewById(R.id.note_author_image);
+    TextView authorName = root.findViewById(R.id.note_author_name);
     TextView noteTitle = root.findViewById(R.id.note_title);
     TextView noteContent = root.findViewById(R.id.note_content);
     LinearLayout deleteNote = root.findViewById(R.id.delete_note);
     TextView noteDate = root.findViewById(R.id.note_date);
     Note note = (Note) this.getArguments().getSerializable("note");
 
+    User author = DatabaseUtils.getDatabase(getContext()).userDAO().getAuthor(note.getAuthor());
 
-    /*noteAuthorImage.setImageResource(note.getAuthor().getImage());
-    noteAuthorName.setText(note.getAuthor().getFullName());*/
+    authorImage.setImageResource(author.getImage());
+    authorName.setText(author.getFullName());
+    Log.e("TEST", author.getFullName());
     noteTitle.setText(note.getTitle());
     noteContent.setText(note.getContent());
-    noteDate.setText(StringUtils.join(requireContext().getString(R.string.created_at_date), " ", note.getCreatedAt(), " ", requireContext().getString(R.string.created_at_time), " ", note.getCreatedAt()));
+    noteDate.setText(StringUtils.join(
+      requireContext().getString(R.string.created_at_date), " ", note.getDate(), " ",
+      requireContext().getString(R.string.created_at_time), " ", note.getTime()));
 
     deleteNote.setOnClickListener(view -> {
       new AlertDialog.Builder(requireContext())

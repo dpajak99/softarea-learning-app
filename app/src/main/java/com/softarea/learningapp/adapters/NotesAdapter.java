@@ -69,7 +69,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     User author = DatabaseUtils.getDatabase(context).userDAO().getAuthor(note.getAuthor());
     holder.authorName.setText(author.getFullName());
     holder.authorImage.setImageResource(author.getImage());
-    holder.date.setText(StringUtils.join(note.getCreatedAt(), " \n",note.getCreatedAt()));
+    holder.date.setText(StringUtils.join(note.getDate(), " \n",note.getTime()));
 
     holder.contentHolder.setOnClickListener(view -> {
       NavController navController = Navigation.findNavController(activity, R.id.fragment_main);

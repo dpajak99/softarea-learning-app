@@ -25,20 +25,20 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="3e603889-9533-489b-bd7e-78a7da22c462">
-        <schema name="main" object-types="view, index, dataset trigger, constraint, table, column" />
+        <schema name="main" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3e603889-9533-489b-bd7e-78a7da22c462">
-      <console name="Softarea School" type="STANDARD" schema="main" session="Main"><![CDATA[select
+      <console name="Softarea School" type="STANDARD" schema="main" session="Main">select
     n.author,
     n.content,
-    n."date",
+    n.&quot;date&quot;,
     n.id,
     n.title
 from
-    NOTES n;]]></console>
+    NOTES n;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
