@@ -3,17 +3,13 @@ package com.softarea.learningapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
       boolean isHome = destination.getId() == R.id.navigation_home;
       mNestedView.setNestedScrollingEnabled(isHome);
-      appBarLayout.setExpanded(isHome, false);
+      appBarLayout.setExpanded(isHome, true);
       appBarLayout.setBackgroundResource(isHome ? R.color.below_toolbar : R.color.backgroundColor);
     });
 

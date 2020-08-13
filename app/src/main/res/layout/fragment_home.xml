@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.HomeFragment">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -32,11 +34,10 @@
                 android:src="@drawable/ic_softarea_school_logo" />
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/box_calendar_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/box_below_toolbar"
             android:layout_marginTop="@dimen/margin_large"
             android:background="@drawable/shadow_background"
             android:orientation="vertical"
@@ -69,17 +70,17 @@
                 android:id="@+id/list_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/p1_box"
+                android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
                 android:layout_marginTop="@dimen/margin_large"
                 android:orientation="vertical" />
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/box_tutorial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/box_calendar_events"
+            android:orientation="vertical"
             android:layout_marginTop="@dimen/margin_large"
             android:background="@drawable/shadow_background"
             android:paddingBottom="@dimen/margin_huge">
@@ -111,17 +112,15 @@
                 style="@style/scrollbar_shape_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/p2_box"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:fadeScrollbars="false"
                 android:orientation="horizontal" />
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/box_tutorial"
             android:layout_marginTop="@dimen/margin_large"
             android:background="@drawable/shadow_background"
             android:orientation="vertical"
@@ -141,11 +140,10 @@
                 android:id="@+id/list_statistic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_p3"
+                android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
                 android:layout_marginTop="@dimen/margin_medium" />
-        </RelativeLayout>
-    </RelativeLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
