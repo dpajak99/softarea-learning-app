@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.adapters.NotesAdapter;
-import com.softarea.learningapp.dao.NotesDAO;
+import com.softarea.learningapp.utils.DatabaseUtils;
 
 public class NotesFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
@@ -22,7 +22,7 @@ public class NotesFragment extends Fragment {
     RecyclerView notesList = root.findViewById(R.id.list_notes);
     notesList.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
-    NotesAdapter notesAdapter = new NotesAdapter(getActivity(), NotesDAO.getNotes(requireContext()));
+    NotesAdapter notesAdapter = new NotesAdapter(getContext(), getActivity(), DatabaseUtils.getDatabase(getContext()).notesDAO().getAll());
     notesList.setHasFixedSize(true);
     notesList.setAdapter(notesAdapter);
 

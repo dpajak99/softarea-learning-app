@@ -1,20 +1,32 @@
 package com.softarea.learningapp.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
-import java.util.Date;
 
+@Entity(tableName = "NOTES")
 public class Note implements Serializable {
+  @PrimaryKey(autoGenerate = true)
   private int id;
+  @ColumnInfo(name = "title")
   private String title;
+  @ColumnInfo(name = "content")
   private String content;
-  private User author;
-  private Date createdAt;
+  @ColumnInfo(name = "author")
+  private int author;
+  @ColumnInfo(name = "date")
+  private String date;
+  @ColumnInfo(name = "time")
+  private String time;
 
-  public Note(String title, String content, User author, Date created_at) {
+  public Note(String title, String content, int author, String date, String time) {
     this.title = title;
     this.content = content;
     this.author = author;
-    this.createdAt = created_at;
+    this.date = date;
+    this.time = time;
   }
 
   public int getId() {
@@ -33,12 +45,16 @@ public class Note implements Serializable {
     return content;
   }
 
-  public User getAuthor() {
+  public int getAuthor() {
     return author;
   }
 
-  public Date getCreatedAt() {
-    return createdAt;
+  public String getDate() {
+    return date;
+  }
+
+  public String getTime() {
+    return time;
   }
 
 

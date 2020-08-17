@@ -1,6 +1,7 @@
 package com.softarea.learningapp.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,9 @@ import androidx.navigation.Navigation;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.components.ImageViewRounded;
-import com.softarea.learningapp.dao.NotesDAO;
 import com.softarea.learningapp.model.Note;
-import com.softarea.learningapp.utils.DateUtils;
+import com.softarea.learningapp.model.User;
+import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.StringUtils;
 
 public class ShowNoteFragment extends Fragment {
@@ -26,32 +27,35 @@ public class ShowNoteFragment extends Fragment {
                            ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_show_note, container, false);
 
-    ImageViewRounded noteAuthorImage = root.findViewById(R.id.note_author_image);
-    TextView noteAuthorName = root.findViewById(R.id.note_author_name);
+    ImageViewRounded authorImage = root.findViewById(R.id.note_author_image);
+    TextView authorName = root.findViewById(R.id.note_author_name);
     TextView noteTitle = root.findViewById(R.id.note_title);
     TextView noteContent = root.findViewById(R.id.note_content);
     LinearLayout deleteNote = root.findViewById(R.id.delete_note);
     TextView noteDate = root.findViewById(R.id.note_date);
     Note note = (Note) this.getArguments().getSerializable("note");
 
-    noteAuthorImage.setImageResource(note.getAuthor().getImage());
-    noteAuthorName.setText(note.getAuthor().getFullName());
+    User author = DatabaseUtils.getDatabase(getContext()).userDAO().getAuthor(note.getAuthor());
+
+    authorImage.setImageResource(author.getImage());
+    authorName.setText(author.getFullName());
+    Log.e("TEST", author.getFullName());
     noteTitle.setText(note.getTitle());
     noteContent.setText(note.getContent());
-    noteDate.setText(StringUtils.join(requireContext().getString(R.string.created_at_date), " ", DateUtils.parseDate(note.getCreatedAt()), " ", requireContext().getString(R.string.created_at_time), " ", DateUtils.parseTime(note.getCreatedAt())));
+    noteDate.setText(StringUtils.join(
+      requireContext().getString(R.string.created_at_date), " ", note.getDate(), " ",
+      requireContext().getString(R.string.created_at_time), " ", note.getTime()));
 
     deleteNote.setOnClickListener(view -> {
       new AlertDialog.Builder(requireContext())
         .setTitle(R.string.app_name)
         .setMessage(R.string.note_delete_confirm)
         .setPositiveButton(R.string.yes, (dialog, which) -> {
-          if(NotesDAO.deleteNote(requireContext(), note.getId())) {
-            NavController navController = Navigation.findNavController(getActivity(), R.id.fragment_main);
-            navController.navigate(R.id.navigation_notes);
-            Toast.makeText(requireContext(), R.string.note_delete_successful, Toast.LENGTH_LONG).show();
-          } else {
-            Toast.makeText(requireContext(), R.string.note_delete_error, Toast.LENGTH_LONG).show();
-          }
+          DatabaseUtils.getDatabase(getContext()).notesDAO().delete(note);
+
+          NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment_main);
+          navController.navigate(R.id.navigation_notes);
+          Toast.makeText(requireContext(), R.string.note_delete_successful, Toast.LENGTH_LONG).show();
         })
         .setNegativeButton(R.string.no, null)
         .setIcon(R.drawable.ic_delete)

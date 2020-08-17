@@ -2,6 +2,7 @@ package com.softarea.learningapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.adapters.ToolbarShortcutAdapter;
 import com.softarea.learningapp.components.ImageViewRounded;
+import com.softarea.learningapp.consts.UserPreferences;
 import com.softarea.learningapp.dao.LoginDAO;
 import com.softarea.learningapp.dao.ToolbarShortcutDAO;
 import com.softarea.learningapp.model.User;
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.toolbar);
     AppBarLayout appBarLayout = findViewById(R.id.app_bar);
 
+    User user = (User) getIntent().getExtras().getSerializable("user");
+    Log.e("TEST", user.toString());
+    UserPreferences.setPreferences(getApplicationContext(), user);
 
     setSupportActionBar(toolbar);
     toolbar.setNavigationOnClickListener(v -> MainActivity.this.onBackPressed());
@@ -61,9 +66,8 @@ public class MainActivity extends AppCompatActivity {
     TextView profileName = findViewById(R.id.profile_name);
     TextView profilePosition = findViewById(R.id.profile_position);
 
-    User user = (User) getIntent().getExtras().getSerializable("user");
-    profileImage.setImageResource(user.getImage());
-    profileName.setText(user.getFullName());
+    profileImage.setImageResource(UserPreferences.getInstance(getApplicationContext()).getInt(UserPreferences.USER_IMAGE, UserPreferences.ERROR_NOT_FOUND_INT));
+    profileName.setText(UserPreferences.getInstance(getApplicationContext()).getString(UserPreferences.USER_NAME, UserPreferences.ERROR_NOT_FOUND_STRING));
     profilePosition.setText(user.getPosition());
 
     RecyclerView toolbarShortcutsList = findViewById(R.id.list_toolbar_shortcuts);

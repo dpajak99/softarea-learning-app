@@ -1,31 +1,22 @@
 package com.softarea.learningapp.dao;
 
-import android.content.Context;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
 
 import com.softarea.learningapp.model.Note;
-import com.softarea.learningapp.sqlite.DBManager;
 
 import java.util.List;
 
-public class NotesDAO {
-  public static void createNote(Context context, Note note) {
-    DBManager dbManager = new DBManager(context);
-    dbManager.addNote(note);
-    note.setId(NotesDAO.getLastId(context));
-  }
+@Dao
+public interface NotesDAO {
+  @Query("SELECT * FROM NOTES")
+  List<Note> getAll();
 
-  public static List<Note> getNotes(Context context) {
-    DBManager dbManager = new DBManager(context);
-    return dbManager.getNotes();
-  }
+  @Insert
+  void insert(Note note);
 
-  public static int getLastId(Context context) {
-    DBManager dbManager = new DBManager(context);
-    return dbManager.getLastId();
-  }
-
-  public static boolean deleteNote(Context context, int id ) {
-    DBManager bdbManager = new DBManager(context);
-    return bdbManager.deleteNote(id);
-  }
+  @Delete
+  void delete(Note note);
 }

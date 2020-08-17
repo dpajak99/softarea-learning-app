@@ -2,17 +2,19 @@ package com.softarea.learningapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.softarea.learningapp.R;
+import com.softarea.learningapp.dao.TokenDAO;
+import com.softarea.learningapp.dao.UserDAO;
+import com.softarea.learningapp.model.Token;
 import com.softarea.learningapp.model.User;
-import com.softarea.learningapp.sqlite.DBManager;
+import com.softarea.learningapp.consts.AlertConst;
 import com.softarea.learningapp.utils.BundleUtils;
+import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.TokenUtils;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -30,26 +32,37 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   public void validateLogin() {
-    DBManager dbManager = new DBManager(getApplicationContext());
-    EditText email = findViewById(R.id.input_email);
-    EditText password = findViewById(R.id.input_password);
+    EditText et_email = findViewById(R.id.input_email);
+    EditText et_password = findViewById(R.id.input_password);
 
-    int id = dbManager.getUserId(email.getText().toString(), password.getText().toString());
-    if (id != 0) {
-      String token = TokenUtils.createToken(id);
-      dbManager.updateToken(token, id);
-      dbManager.updateLocalToken(token);
+    String email = et_email.getText().toString();
+    String password = et_password.getText().toString();
 
-      token = dbManager.getLocalToken();
-      User user = dbManager.getUser(token);
+    UserDAO userDAO = DatabaseUtils.getDatabase(getApplicationContext()).userDAO();
+    TokenDAO tokenDAO = DatabaseUtils.getDatabase(getApplicationContext()).tokenDAO();
 
-      Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-      intent.putExtras(BundleUtils.createSerializableBundle("user", user));
-      intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-      getApplicationContext().startActivity(intent);
+    if (userDAO.checkLoginData(email, password) == DatabaseUtils.USER_EXIST) {
+        User user = userDAO.getUser(email, password);
+        String token = TokenUtils.createToken(user.getId());
+        if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_EXIST) {
+          tokenDAO.updateLocalToken(token);
+        } else if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_NOT_FOUND ) {
+          tokenDAO.createLocalToken(new Token(0, token));
+        } else {
+          AlertConst.alert(getApplicationContext(), AlertConst.MORE_THAN_ONE_TOKEN);
+        }
 
-    } else {
-      Toast.makeText(getApplicationContext(), "Błędne hasło lub login", Toast.LENGTH_LONG).show();
+        userDAO.updateToken(token, user.getId());
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtras(BundleUtils.createSerializableBundle("user", user));
+        intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
+
+      } else if (userDAO.checkLoginData(email, password) == DatabaseUtils.USER_NOT_FOUND) {
+        AlertConst.alert(getApplicationContext(), AlertConst.USER_NOT_FOUND);
+      } else {
+        AlertConst.alert(getApplicationContext(), AlertConst.MORE_THAN_ONE_USER);
+      }
     }
   }
-}

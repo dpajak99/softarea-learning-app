@@ -1,24 +1,25 @@
 package com.softarea.learningapp.activities;
 
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.softarea.learningapp.R;
-import com.softarea.learningapp.model.EncodedToken;
+import com.softarea.learningapp.dao.TokenDAO;
+import com.softarea.learningapp.dao.UserDAO;
+import com.softarea.learningapp.model.Token;
 import com.softarea.learningapp.model.User;
-import com.softarea.learningapp.sqlite.DBManager;
+import com.softarea.learningapp.consts.AlertConst;
 import com.softarea.learningapp.utils.AnimationUtils;
 import com.softarea.learningapp.utils.BundleUtils;
+import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.TokenUtils;
 
 public class SplashScreenActivity extends AppCompatActivity {
+  Intent intent;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -26,28 +27,36 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     ImageView logoView = findViewById(R.id.logo);
 
-    /****************************************/
-    /*User user = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.dpajak);
-    DBManager dbManager = new DBManager(getApplicationContext());
-    dbManager.addUser(user, "dominik", "123");
-    user = new User(0, "Łukasz Usarz", "SOFTAREA - SEO", R.drawable.lusarz);
-    dbManager.addUser(user, "lusarz", "123");*/
-    /****************************************/
-
-
     AnimationUtils.createPulsarLogo(logoView);
 
-    DBManager dbManager = new DBManager(getApplicationContext());
-    dbManager.setLocalToken("000");
+    if( DatabaseUtils.getDatabase(getApplicationContext()).userDAO().getCount(0) == 0 ) {
+      User user = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.dpajak, "dominik00801@gmail.com", "123", "000");
+      DatabaseUtils.getDatabase(getApplicationContext()).userDAO().insert(user);
+    }
 
-    String token = dbManager.getLocalToken();
+    if( DatabaseUtils.getDatabase(getApplicationContext()).userDAO().getCount(1) == 0 ) {
+      User user = new User(1, "Łukasz Usarz", "SOFTAREA - SEO", R.drawable.lusarz, "lusarz", "123", "000");
+      DatabaseUtils.getDatabase(getApplicationContext()).userDAO().insert(user);
+    }
 
-    Intent intent;
-    if(TokenUtils.validateToken(token)) {
-      intent = new Intent(getApplicationContext(), MainActivity.class);
-      intent.putExtras(BundleUtils.createSerializableBundle("user", dbManager.getUser(token)));
-    } else {
+
+    TokenDAO tokenDAO = DatabaseUtils.getDatabase(getApplicationContext()).tokenDAO();
+    UserDAO userDAO = DatabaseUtils.getDatabase(getApplicationContext()).userDAO();
+    Token token = tokenDAO.getLocalToken();
+
+    if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_EXIST) {
+      if(TokenUtils.validateToken(token.getToken())) {
+        intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtras(BundleUtils.createSerializableBundle("user", userDAO.getUser(token.getToken())));
+      } else {
+        AlertConst.alert(getApplicationContext(), AlertConst.SESSION_EXPIRED);
+
+        intent = new Intent(getApplicationContext(), LoginActivity.class);
+      }
+    } else if(tokenDAO.checkTokenExist() == DatabaseUtils.TOKEN_NOT_FOUND){
       intent = new Intent(getApplicationContext(), LoginActivity.class);
+    } else {
+      AlertConst.alert(getApplicationContext(), AlertConst.MORE_THAN_ONE_TOKEN);
     }
 
     final Handler handler = new Handler();

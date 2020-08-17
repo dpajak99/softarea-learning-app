@@ -1,6 +1,6 @@
 package com.softarea.learningapp.adapters;
 
-import android.os.Bundle;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.softarea.learningapp.R;
 import com.softarea.learningapp.model.Note;
+import com.softarea.learningapp.model.User;
 import com.softarea.learningapp.utils.BundleUtils;
-import com.softarea.learningapp.utils.DateUtils;
+import com.softarea.learningapp.utils.DatabaseUtils;
 import com.softarea.learningapp.utils.StringUtils;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
   private final FragmentActivity activity;
   private List<Note> notes;
+  private Context context;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
     public CardView contentHolder;
@@ -45,7 +47,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     }
   }
 
-  public NotesAdapter(FragmentActivity activity, List<Note> notes) {
+  public NotesAdapter(Context context, FragmentActivity activity, List<Note> notes) {
+    this.context = context;
     this.activity = activity;
     this.notes = notes;
   }
@@ -63,15 +66,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
   public void onBindViewHolder(ViewHolder holder, int position) {
     Note note = notes.get(position);
     holder.title.setText(note.getTitle());
-    holder.authorName.setText(note.getAuthor().getFullName());
-    holder.authorImage.setImageResource(note.getAuthor().getImage());
-    holder.date.setText(StringUtils.join(DateUtils.parseDate(note.getCreatedAt()), " \n",DateUtils.parseTime(note.getCreatedAt())));
+    User author = DatabaseUtils.getDatabase(context).userDAO().getAuthor(note.getAuthor());
+    holder.authorName.setText(author.getFullName());
+    holder.authorImage.setImageResource(author.getImage());
+    holder.date.setText(StringUtils.join(note.getDate(), " \n",note.getTime()));
 
     holder.contentHolder.setOnClickListener(view -> {
       NavController navController = Navigation.findNavController(activity, R.id.fragment_main);
       navController.navigate(R.id.navigation_show_note, BundleUtils.createSerializableBundle("note", note));
     });
-
   }
 
   @Override
