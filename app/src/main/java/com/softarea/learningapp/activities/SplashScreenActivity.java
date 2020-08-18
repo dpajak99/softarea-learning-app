@@ -30,7 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     AnimationUtils.createPulsarLogo(logoView);
 
     if( DatabaseUtils.getDatabase(getApplicationContext()).userDAO().getCount(0) == 0 ) {
-      User user = new User(0, "Dominik Pająk", "SOFTAREA - Junior Android Developer", R.drawable.dpajak, "dominik00801@gmail.com", "123", "000");
+      User user = new User(0, "John Kowalski", "SOFTAREA - Android Developer", R.drawable.dpajak, "john", "123", "000");
       DatabaseUtils.getDatabase(getApplicationContext()).userDAO().insert(user);
     }
 

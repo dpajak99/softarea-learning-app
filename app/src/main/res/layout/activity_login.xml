@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adres email:"
+            android:text="Login:"
             android:fontFamily="@font/lato_black"/>
         <EditText
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
-            android:text="Hasło:"
+            android:text="Password:"
             android:fontFamily="@font/lato_black"/>
         <EditText
             android:layout_width="match_parent"
