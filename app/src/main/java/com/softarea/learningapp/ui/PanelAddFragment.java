@@ -21,7 +21,7 @@ public class PanelAddFragment extends Fragment {
 
 
     RecyclerView panelAddList = root.findViewById(R.id.list_panel_add);
-    PanelAddAdapter panelAddAdapter = new PanelAddAdapter(PanelAddDAO.getData(getContext()));
+    PanelAddAdapter panelAddAdapter = new PanelAddAdapter(getActivity(), PanelAddDAO.getData());
     panelAddList.setHasFixedSize(true);
     panelAddList.setLayoutManager(new LinearLayoutManager(getActivity()));
     panelAddList.setAdapter(panelAddAdapter);

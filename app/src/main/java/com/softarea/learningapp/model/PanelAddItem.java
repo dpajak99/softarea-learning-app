@@ -2,9 +2,9 @@ package com.softarea.learningapp.model;
 
 public class PanelAddItem {
   private String name;
-  private String href;
+  private int href;
 
-  public PanelAddItem(String name, String href) {
+  public PanelAddItem(String name, int href) {
     this.name = name;
     this.href = href;
   }
@@ -13,7 +13,7 @@ public class PanelAddItem {
     return name;
   }
 
-  public String getHref() {
+  public int getHref() {
     return href;
   }
 }

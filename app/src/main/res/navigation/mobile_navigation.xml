@@ -46,4 +46,5 @@
         android:name="com.softarea.learningapp.ui.ShowNoteFragment"
         android:label="@string/title_show_note"
         tools:layout="@layout/fragment_show_note" />
+
 </navigation>
